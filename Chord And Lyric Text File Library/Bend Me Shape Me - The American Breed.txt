@@ -1,3 +1,5 @@
+[Root] C
+
 C Bb F Bb  C Bb F Bb
 
 C               Bb      F         Bb       C        Bb       F        Bb

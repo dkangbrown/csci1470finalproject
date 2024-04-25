@@ -1,3 +1,5 @@
+[Root] C
+
 C          F
 I found my thrill
              C

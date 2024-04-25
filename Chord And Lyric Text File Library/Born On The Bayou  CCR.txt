@@ -1,3 +1,5 @@
+[Root] A
+
 E7* E\E7** E\E7 E\E7 E\E7 4x
 
      E7*        E      E7**

@@ -1,3 +1,5 @@
+[Root] G
+
 [Intro]  G   Am   G   Am   G   Am   G   Am   
 
 [Verse 1]

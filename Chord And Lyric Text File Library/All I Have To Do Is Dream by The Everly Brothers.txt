@@ -1,3 +1,5 @@
+[Root] C
+
 [Chorus]
 
 C               Am      F               G7

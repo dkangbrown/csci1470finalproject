@@ -1,5 +1,7 @@
 
-Chorus 1:
+[Root] A
+
+[Chorus 1]
 
         A                    D
 Another Saturday night and I ain't got nobody,
@@ -10,7 +12,7 @@ Now, how I wish I had someone to talk to;
 E          D     A
  I'm in an awful way. Dig this...
 
-Verse 1:
+[Verse 1]
 
 A                E7              A                         D
  I got in town a month ago; I've seen a lot of girls since then.
@@ -19,7 +21,7 @@ If I can meet 'em, I can get 'em, but, as yet, I haven't met 'em,
        E              D         A
 That's why I'm in the shape I'm in. Here...
 
-Chorus 2:
+[Chorus 2]
 
         A                    D
 Another Saturday night and I ain't got nobody,
@@ -30,7 +32,7 @@ Now, how I wish I had someone to talk to;
 E          D     A
  I'm in an awful way. Now...
 
-Verse 2:
+[Verse 2]
 
 A               E7                A                      D
  Another feller told me; he had a sister who looked just fine.
@@ -39,7 +41,7 @@ Instead of being my deliverance, she had a strange resemblance,
      E         D       A
 To a cat named Franken-stein. Here...
 
-Chorus 3:
+[Chorus 3]
 
         A                    D
 Another Saturday night and I ain't got nobody,
@@ -50,11 +52,7 @@ Now, how I wish I had some chick to talk to;
 E          D     A
  I'm in an awful way. Yeah!
 
-Interlude:
-
-A  E7, A  D, A  D, E  D  A
-
-Verse 4:
+[Verse 4]
 
 A               E7           A                       D
  It's hard on a feller, when he don't know his way a-round.
@@ -63,7 +61,7 @@ If I don't find me a honey, to help me spend my money,
     E             D         A
 I'm gonna have to blow this town. Here, it's...
 
-Chorus 4:
+[Chorus 4]
 
         A                    D
 Another Saturday night and I ain't got nobody,
@@ -74,7 +72,7 @@ Now, how I wish I had some chick to talk to;
 E          D     A
  I'm in an awful way. Everybody sing...
 
-Chorus 5:
+[Chorus 5]
 
         A                    D
 Another Saturday night and I ain't got nobody,

@@ -1,3 +1,5 @@
+[Root] D
+
    D            A 
 Day-o, Day-ay-ay-o
    D                    A

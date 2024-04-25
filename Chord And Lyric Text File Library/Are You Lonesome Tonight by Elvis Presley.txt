@@ -1,3 +1,5 @@
+[Root] C
+
 [Verse 1]
 
          C        Em            Am         Am

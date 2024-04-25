@@ -1,4 +1,6 @@
-Vs
+[Root] G
+
+VERSE 1
 G             C
 Hey where did we go,
 G             D
@@ -16,7 +18,7 @@ In the misty morning fog with
 G            D            C,   D
 Our hearts a thumpin' and you
 
-Ch
+CHORUS
               G    Em
 My brown eyed girl,
 C  D              G 
@@ -24,7 +26,7 @@ You my brown eyed girl.
 
 
 
-Vs 2
+VERSE 2
 G        C
 Whatever happened 
 G              D
@@ -42,7 +44,7 @@ Slipping and sliding
 G             D                C       D
 All along the water fall, with you
 
-Ch
+CHORUS
               G     Em
 My brown eyed girl,
 C  D              G 
@@ -52,7 +54,7 @@ Do you remember when we used to sing,
 G           C           G         D      
 Sha la la la la la la la la la la te da   
 
-Vs 3
+VERSE 3
 So hard to find my way,
  
 Now that I'm all on my own. 
@@ -69,7 +71,7 @@ Making love in the green grass
 
 Behind the stadium with you
 
-Ch 
+CHORUS 
 My brown eyed girl 
 You my brown eyed girl 
 

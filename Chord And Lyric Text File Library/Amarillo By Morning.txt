@@ -1,3 +1,4 @@
+[Root] D
 
 D F#m G A 
 D F#m G A 

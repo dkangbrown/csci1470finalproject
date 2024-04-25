@@ -1,6 +1,4 @@
-[Intro]
-
-|G Bm| Em Em7|C  |C  |
+[Root] G
 
 
 [Verse 1]
@@ -68,12 +66,6 @@ Made the bus in seconds flat
 Found my way upstairs and had a smoke
     E                         B7sus4
 And somebody spoke and I went into a dream.
-
-
-[Interlude]
-
-C G        D A   E      C G   D A  |E D C D|
-(Aaaaaaaaaaaahhhhhhhhhhhhhhhhhhhh)
 
 
 [Verse 4]

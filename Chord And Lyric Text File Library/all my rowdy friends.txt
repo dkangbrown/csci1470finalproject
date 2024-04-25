@@ -1,3 +1,5 @@
+[Root] C
+
 C            G                    C
 All my rowdy friends have settled down
     F                    G              C

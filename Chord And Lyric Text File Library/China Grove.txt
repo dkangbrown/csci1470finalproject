@@ -1,3 +1,5 @@
+[Root] E
+
 Intro:  EDAE (repeat 2x), EDA..
 
 E

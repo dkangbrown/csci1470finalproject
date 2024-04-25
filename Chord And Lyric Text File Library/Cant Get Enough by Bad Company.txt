@@ -1,3 +1,5 @@
+[Root] C
+
 [intro]  C   Bb   F     Bb   F (2x)
 
   C             Bb         F 

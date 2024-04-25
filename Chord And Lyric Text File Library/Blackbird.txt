@@ -1,3 +1,5 @@
+[Root] G
+
 [Verse]
 
 G         Am             G  

@@ -1,4 +1,7 @@
-#1.
+[Root] D
+
+VERSE 1
+
 D                             G     A      D        G A
 Oh, they like to get you in a compromising position.
 D                    G               A       D    G A
@@ -10,7 +13,8 @@ that condition.
       D              G   A      D      G     A
 Well, I think it's a to..tal disgrace..and I said..
 
-CHORUS:
+CHORUS
+
 D                  G         A      D    G A
 I fight authority, authority always wins.
       D                  G         A      D    G A
@@ -25,7 +29,8 @@ Well, I fight authority, authority always wins.
 
 (INTERLUDE:) D
 
-#2.
+VERSE 2
+
 D                                 G       A
 So, I call up my preacher,I say, 'Give me strength 
     D            G A
@@ -43,7 +48,8 @@ Ohhh, and dying to me don't sound like all that much fun.'
       A
 So, I said..
 
-CHORUS:
+CHORUS
+
 D                  G         A      D    G A
 I fight authority, authority always wins.
       D                  G         A      D    G A
@@ -58,7 +64,8 @@ Well, I fight authority, authority always wins.
 
 (INTERLUDE:) D G D G..D G D
 
-#3.
+VERSE 3
+
 D
 I said, oh, no..no, no.....I said, oh, no..no, no.....
 
@@ -74,7 +81,8 @@ I come out grinnin'.
       D                  G         A      D    G A
 Well, I fight authority, authority always wins.
 
-CHORUS:
+CHORUS
+
         D                G         A      D    G A
 Well, I fight authority, authority always wins.
       D                  G         A      D    G A
@@ -86,7 +94,8 @@ I come out grinnin'.
       D                  G         A      D    G A
 Well, I fight authority, authority always wins.
 
-OUTRO:
+OUTRO
+
       D                  G         A      D    G A
 Well, I fight authority, authority always wins.
       D                  G         A      D    G A

@@ -1,4 +1,5 @@
-INTRO- G D C G,  THEN- C D G
+[Root] C
+
 VERSE 1
 C                        D          G
 Now, every time that I come home nobody wants to let me be.
@@ -8,6 +9,7 @@ C             D                   Em                                       C
 Well, I appreciate your feelings, and I don't want to pass you by,
 G             D                           C                G
 But I don't ask you about your business. Don't ask me about mine.
+
 VERSE 2
 C                      D                                 G
 Well, it's true I love the money, and I love my brand new car.

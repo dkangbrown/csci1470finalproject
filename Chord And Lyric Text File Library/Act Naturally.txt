@@ -1,8 +1,7 @@
-Intro:
-D7, G
+[Root] G
 
 
-Verse 1:
+[Verse 1]
 G                            C
 They're gonna put me in the movies
 G                                     D7
@@ -13,7 +12,7 @@ We'll make a film about a man that's sad and lonely
 and all I gotta do is act naturally
 
 
-Middle:
+[Middle]
            D7                     G
 Well, I'll bet you I'm gonna be a big star
       D7                             G
@@ -24,7 +23,7 @@ the movies gonna make me a big star
 'Cause I can play the part so well
 
 
-Verse 2:
+[Verse 2]
        G                                C
 Well I hope you come and see me in the movies
 G                                 D7
@@ -35,11 +34,7 @@ The biggest fool that ever hit the big time
 and all I gotta do is act naturally
 
 
-Guitar Solo
-D7, G, D7, G
-
-
-Verse 3:
+[Verse 3]
       G                                           C
 We'll make the scene about a man that's sad and lonely
     G                           D7
@@ -50,7 +45,7 @@ I'll play the part but I won't need rehearsin'
 all I gotta do is act naturally
 
 
-Middle:
+[Middle]
            D7                     G
 Well, I'll bet you I'm gonna be a big star
       D7                             G
@@ -61,7 +56,7 @@ the movies gonna make me a big star
 'Cause I can play the part so well
 
 
-Verse 2:
+[Verse 2]
        G                                C
 Well I hope you come and see me in the movies
 G                                 D7
@@ -70,6 +65,3 @@ then I know that you will plainly see
 The biggest fool that ever hit the big time
     D7                           G
 and all I gotta do is act naturally
-
-Outro:
-D7, G

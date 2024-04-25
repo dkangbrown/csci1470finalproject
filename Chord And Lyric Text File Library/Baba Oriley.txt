@@ -1,6 +1,4 @@
-
-
-D  A  G  x8
+[Root] D
 
 
 D            A   G

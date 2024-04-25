@@ -1,7 +1,4 @@
-
-A
-A G D  4x
-A  G D  2x
+[Root] A
 
 A             G         D     A         G D
 I can see why you think you belong to me
@@ -18,8 +15,6 @@ A        G                 D
 I think, I could stay with you
       Bm                       E  E7
 For a while, maybe longer if I do
-
-A  G D  2x
 
 A                   G       D         A          G D
 Don't you think the time is right for us to find?
@@ -41,19 +36,13 @@ I think, I could stay with you
       Bm                       E  E7
 For a while, maybe longer if I do
 
-A  G D  2x
 
-solo
-
-Well now
 A     G              D
 Amie, what you wanna do?
 A        G                 D
 I think, I could stay with you
       Bm                       E  E7
 For a while, maybe longer if I do
-
-A  G D  2x
 
 A                G        D           A           G D
 Now it's come to what you want you've had your way

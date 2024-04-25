@@ -1,7 +1,4 @@
-
-[Intro]
-
-E        F#  G
+[Root] E
 
 
 [Verse]

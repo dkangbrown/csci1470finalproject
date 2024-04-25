@@ -1,3 +1,5 @@
+[Root] D
+
 [Intro]
 
    C  G  Bb  D  F  G  D
