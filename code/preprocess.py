@@ -5,9 +5,9 @@ def preprocess_song(file_path):
         lines = file.readlines()
 
     # Regular expressions to identify chords and tabs
-    chord_regex = re.compile(r"[A-G][#b]?m?(maj7|maj|min7|min|7|sus4)?")
-    section_regex = re.compile(r"^\[.*\]$")
-    accidental_regex = re.compile(r"#|b")
+    chord_regex = re.compile(r"^[A-G][#b]?m?(maj7|maj|min7|min|7|sus2|sus4)?$")
+    section_regex = re.compile(r"^(\[|#)?(chorus|Chorus|CHORUS|verse|Verse|VERSE|intro|Intro|INTRO|outro|Outro|OUTRO|bridge|Bridge|BRIDGE|interlude|Interlude|INTERLUDE|instrumental|Instrumental|INSTRUMENTAL|solo|Solo|SOLO)*( )?[0-9]*(\]|\:|\.)?$")
+    accidental_regex = re.compile(r"^[#b]$")
 
     current_section = None
     key_to_pitch = {
@@ -67,6 +67,8 @@ def preprocess_song(file_path):
             chord_rel_pitch = pitch - key_pitch
         else:
             chord_rel_pitch = 12 + pitch - key_pitch
+        
+        return chord_rel_pitch
 
     def chord_to_vector(chord):
         chord_rel_pitch = get_rel_pitch(get_root_pitch(chord))
@@ -81,8 +83,18 @@ def preprocess_song(file_path):
         else:
             qual = chord.split()[1:]
         
-        if qual.contains('add'):
+        if 'add' in qual:
             qual = qual[0:qual.index('add')]
+        elif '9' in qual:
+            qual = qual[0:qual.index('9')]
+        elif '11' in qual:
+            qual = qual[0:qual.index('11')]
+        elif '13' in qual:
+            qual = qual[0:qual.index('13')]
+        elif '15' in qual:
+            qual = qual[0:qual.index('15')]
+        elif '17' in qual:
+            qual = qual[0:qual.index('17')]
 
         return [chord_rel_pitch,base_rel_pitch,qual_to_num[qual]]
 
@@ -129,7 +141,7 @@ def preprocess_song(file_path):
         #         chords = ""  # Reset after pairing
         #         lyrics = ""
 
-    return song_data
+    return verses
 
 if __name__ == '__main__':
     file_path = 'song.txt'
