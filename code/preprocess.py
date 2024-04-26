@@ -1,13 +1,14 @@
 from utils import re
 
 def preprocess_song(file_path):
+    print("preprocess starting")
     with open(file_path, 'r') as file:
         lines = file.readlines()
 
     # Regular expressions to identify chords and tabs
-    chord_regex = re.compile(r"^[A-G][#b]?m?(maj7|maj|min7|min|7|sus2|sus4)?$")
-    section_regex = re.compile(r"^(\[|#)?(chorus|Chorus|CHORUS|verse|Verse|VERSE|intro|Intro|INTRO|outro|Outro|OUTRO|bridge|Bridge|BRIDGE|interlude|Interlude|INTERLUDE|instrumental|Instrumental|INSTRUMENTAL|solo|Solo|SOLO)*( )?[0-9]*(\]|\:|\.)?$")
-    accidental_regex = re.compile(r"^[#b]$")
+    chord_regex = re.compile(r"\s*[A-G][#b]?m?(maj7|maj|min7|min|7|sus2|sus4)?")
+    section_regex = re.compile(r"^(\[|#)(chorus|Chorus|CHORUS|verse|Verse|VERSE|intro|Intro|INTRO|outro|Outro|OUTRO|bridge|Bridge|BRIDGE|interlude|Interlude|INTERLUDE|instrumental|Instrumental|INSTRUMENTAL|solo|Solo|SOLO)*( )?[0-9]*(\]|\:|\.)?$")
+    accidental_regex = re.compile(r"[#b]")
 
     current_section = None
     key_to_pitch = {
@@ -48,8 +49,12 @@ def preprocess_song(file_path):
 
     def get_root_pitch(chord):
         root_key = chord.split()[0:1]
-        if accidental_regex.match(root_key[1]):
-            root_key = root_key[0]+root_key[1]
+        print(f"root_key: {root_key}")
+        if len(root_key) > 1:
+            if accidental_regex.match(root_key[1]):
+                root_key = root_key[0]+root_key[1]
+            else:
+                root_key = root_key[0]
         else:
             root_key = root_key[0]
 
@@ -57,6 +62,7 @@ def preprocess_song(file_path):
 
     verses = []
     key = lines[0].strip().split(' ')[1]
+    print(f"key: {key}")
     key_pitch = get_root_pitch(key)
     lines = lines[1:]
     versenum = -1
@@ -78,7 +84,7 @@ def preprocess_song(file_path):
         else:
             base_rel_pitch = chord_rel_pitch
 
-        if accidental_regex.match(chord.split()[1]):
+        if accidental_regex.match(chord):
             qual = chord.split()[2:]
         else:
             qual = chord.split()[1:]
@@ -95,33 +101,45 @@ def preprocess_song(file_path):
             qual = qual[0:qual.index('15')]
         elif '17' in qual:
             qual = qual[0:qual.index('17')]
+        else:
+            qual = ''
 
-        return [chord_rel_pitch,base_rel_pitch,qual_to_num[qual]]
+        print(chord_rel_pitch)
+        print(base_rel_pitch)
+        print(qual)
+
+        return [chord_rel_pitch, base_rel_pitch, qual_to_num[qual]]
 
     def get_chord_list(line):
+        print(f"getting chord list of {line}")
         line = line.strip()
         chord_list = line.split(" ")
-        chord_list = [chord_to_vector(x) for x in chord_list if x != '']
+        chord_list = [x for x in chord_list if x]
+        print(f"chord list: {chord_list}")
+        chord_list = [chord_to_vector(x) for x in chord_list]
         return chord_list
 
     for line in lines:
         line = line.strip()
-
-        if section_regex.match(line):
-            if isbreak == 0:
-                isbreak == 1
+        print(f"line: {line}")
+        if line:
+            if section_regex.match(line):
+                print(f"section regex match; isbreak = {isbreak}")
+                # if isbreak == 0:
+                #     isbreak == 1
                 versenum += 1
-                verses[versenum] = {'text': "", 'chords': []}
-        else:
-            if isbreak == 1:
-                isbreak == 0
-                if chord_regex.match(line):
-                    verses[versenum]['chords'] += get_chord_list(line)
+                print(f"versenum: {versenum}")
+                verses.append({'text': "", 'chords': []})
             else:
+                print(f"No section regex match; isbreak = {isbreak}")
+                # if isbreak == 1:
+                #     isbreak == 0
+                print(f"match: {chord_regex.match(line)}")
                 if chord_regex.match(line):
                     verses[versenum]['chords'] += get_chord_list(line)
-                else:
+                    print(verses[versenum]['chords'])
                     verses[versenum]['text'] += line + " "
+                        
 
         # elif tab_regex.match(line):
         #     # Collect tab lines under the current section
@@ -143,7 +161,10 @@ def preprocess_song(file_path):
 
     return verses
 
-if __name__ == '__main__':
-    file_path = 'song.txt'
-    preprocessed_data = preprocess_song(file_path)
-    print(preprocessed_data)
+# if __name__ == '__main__':
+#     file_path = 'song.txt'
+#     preprocessed_data = preprocess_song(file_path)
+#     print(preprocessed_data)
+# chord_regex = re.compile(r"\s*[A-G][#b]?m?(maj7|maj|min7|min|7|sus2|sus4)?")
+# print(chord_regex.search("D   "))
+preprocess_song("../data/Across The Universe.txt")
