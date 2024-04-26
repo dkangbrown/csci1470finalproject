@@ -48,7 +48,7 @@ def preprocess_song(file_path):
     }
 
     def get_root_pitch(chord):
-        root_key = chord.split()[0:1]
+        root_key = list(chord)[0:1]
         print(f"root_key: {root_key}")
         if len(root_key) > 1:
             if accidental_regex.match(root_key[1]):
