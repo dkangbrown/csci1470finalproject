@@ -48,8 +48,9 @@ download_data () {
 
 # download_data "https://guitaralliance.com/chord-lyric-text.zip" "chord-lyric-text" "chord-lyric-text.zip"
 # download_data "git@github.com:00sapo/OpenEWLD.git" "OpenEWLD" "OpenEWLD"
-#
-download_data "http://labrosa.ee.columbia.edu/~dpwe/tmp/millionsongsubset.tar.gz" "millionsongsubset" "millionsongsubset.tar.gz"
+# download_data "http://labrosa.ee.columbia.edu/~dpwe/tmp/millionsongsubset.tar.gz" "millionsongsubset" "millionsongsubset.tar.gz"
+
+download_data "https://marianaossilva.github.io/DSW2019/assets/data/musicoset_songfeatures.zip" "musicoset_songfeatures" "musicoset_songfeatures.zip"
 
 # allLinks=(
 #     "https://guitaralliance.com/chord-lyric-text.zip chord-lyric-text chord-lyric-text.zip"
