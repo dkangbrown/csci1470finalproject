@@ -175,4 +175,4 @@ def preprocess_song(file_path):
 #     print(preprocessed_data)
 # chord_regex = re.compile(r"\s*[A-G][#b]?m?(maj7|maj|min7|min|7|sus2|sus4)?")
 # print(chord_regex.search("D   "))
-print(preprocess_song("data/A Change Is Gonna Come  Sam Cooke.txt"))
+print(preprocess_song("data/chord-lyric-text/A Change Is Gonna Come  Sam Cooke.txt"))

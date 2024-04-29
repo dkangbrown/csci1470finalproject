@@ -43,6 +43,29 @@ download_data () {
     fi
 }
 
-download_data "https://guitaralliance.com/chord-lyric-text.zip" "chord-lyric-text" "chord-lyric-text.zip"
-download_data "git@github.com:00sapo/OpenEWLD.git" "OpenEWLD" "OpenEWLD"
+# Add a loop to ask if you want to download the data for each of the URLs from list
 
+
+# download_data "https://guitaralliance.com/chord-lyric-text.zip" "chord-lyric-text" "chord-lyric-text.zip"
+# download_data "git@github.com:00sapo/OpenEWLD.git" "OpenEWLD" "OpenEWLD"
+#
+download_data "http://labrosa.ee.columbia.edu/~dpwe/tmp/millionsongsubset.tar.gz" "millionsongsubset" "millionsongsubset.tar.gz"
+
+# allLinks=(
+#     "https://guitaralliance.com/chord-lyric-text.zip chord-lyric-text chord-lyric-text.zip"
+#     "http://labrosa.ee.columbia.edu/~dpwe/tmp/millionsongsubset.tar.gz millionsongsubset.tar.gz millionsongsubset.tar.gz"
+# )
+
+# for link in "${allLinks[@]}"; do
+#     # Ask if you want to download the data
+#     echo "Do you want to download the data for $link? (y/n)"
+#     read -r response
+#     if [[ $response != "y" ]]; then
+#         continue
+#     fi
+#
+#     # Split the link into parts
+#     IFS=' ' read -r -a parts <<< "$link"
+#     download_data "${parts[0]}" "${parts[1]}" "${parts[2]}"
+# done
+# ```
