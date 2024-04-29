@@ -43,22 +43,25 @@ def preprocess_song(file_path):
         '7': 4,
         'maj7': 5,
         'min7': 6,
+        'm7': 6,
         'sus2': 7,
         'sus4': 8
     }
 
     def get_root_pitch(chord):
-        root_key = list(chord)[0:1]
-        print(f"root_key: {root_key}")
-        if len(root_key) > 1:
-            if accidental_regex.match(root_key[1]):
-                root_key = root_key[0]+root_key[1]
+        root_note = chord[0:2]
+        print(f"root_note: {root_note}")
+        if len(root_note) > 1:
+            if accidental_regex.match(root_note[1]):
+                root_note = root_note[0]+root_note[1]
             else:
-                root_key = root_key[0]
+                root_note = root_note[0]
         else:
-            root_key = root_key[0]
+            root_note = root_note[0]
+        
+        print(f"root_note: {root_note}")
 
-        return key_to_pitch[root_key]
+        return key_to_pitch[root_note]
 
     verses = []
     key = lines[0].strip().split(' ')[1]
@@ -85,12 +88,14 @@ def preprocess_song(file_path):
             base_rel_pitch = chord_rel_pitch
 
         if accidental_regex.match(chord):
-            qual = chord.split()[2:]
+            qual = chord[2:]
         else:
-            qual = chord.split()[1:]
+            qual = chord[1:]
         
         if 'add' in qual:
             qual = qual[0:qual.index('add')]
+        elif '6' in qual:
+            qual = qual[0:qual.index('6')]
         elif '9' in qual:
             qual = qual[0:qual.index('9')]
         elif '11' in qual:
@@ -101,12 +106,10 @@ def preprocess_song(file_path):
             qual = qual[0:qual.index('15')]
         elif '17' in qual:
             qual = qual[0:qual.index('17')]
-        else:
-            qual = ''
 
-        print(chord_rel_pitch)
-        print(base_rel_pitch)
-        print(qual)
+        print(f"pitch: {chord_rel_pitch}")
+        print(f"rel: {base_rel_pitch}")
+        print(f"qual: {qual}")
 
         return [chord_rel_pitch, base_rel_pitch, qual_to_num[qual]]
 
@@ -134,10 +137,15 @@ def preprocess_song(file_path):
                 print(f"No section regex match; isbreak = {isbreak}")
                 # if isbreak == 1:
                 #     isbreak == 0
-                print(f"match: {chord_regex.match(line)}")
-                if chord_regex.match(line):
+                is_chord_line = True
+                for word in line.split():
+                    if not(is_chord_line and chord_regex.match(word)):
+                        is_chord_line = False
+                print(f"match: {is_chord_line}")
+                if is_chord_line:
                     verses[versenum]['chords'] += get_chord_list(line)
                     print(verses[versenum]['chords'])
+                else:
                     verses[versenum]['text'] += line + " "
                         
 
@@ -167,4 +175,4 @@ def preprocess_song(file_path):
 #     print(preprocessed_data)
 # chord_regex = re.compile(r"\s*[A-G][#b]?m?(maj7|maj|min7|min|7|sus2|sus4)?")
 # print(chord_regex.search("D   "))
-preprocess_song("../data/Across The Universe.txt")
+print(preprocess_song("data/A Change Is Gonna Come  Sam Cooke.txt"))

@@ -1,4 +1,4 @@
-[Root] G
+ [Root] G
 
 
 [Verse 1]
