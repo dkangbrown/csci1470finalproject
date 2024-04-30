@@ -1,3 +1,5 @@
+[Root] F
+
 C7
 Calling out around the world 
 Are you ready for a brand new beat? 
@@ -25,6 +27,7 @@ Every night around the world
             C7
 There'll be dancing in the street 
 
+F C7 F C7 E7 Am D7 G7 C7
 This is an invitation across the nation 
 A chance for folks to meet 
 There'll be laughin' and singin' 
@@ -39,6 +42,7 @@ There'll be dancin' and swayin'
 Records playing, 
 Dancing in the street 
 
+F C7 F C7 E7 Am D7 G7 C7
 Well now, doesn't matter what you wear 
 Just as long as you are there 
 So every guy grab a girl 

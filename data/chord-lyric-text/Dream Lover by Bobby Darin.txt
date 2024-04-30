@@ -1,3 +1,5 @@
+[Root] C
+
 
 [Verse 1]
 
@@ -5,9 +7,9 @@ C                            Am
 Every night I hope and pray, a dream lover will come my way
 C                             Am
 A girl to hold in my arms and know the magic of her charms
-          C   / /     G7   / /      C   / /     F
+          C        G7         C        F
 Because I want      a girl      to call      my own
-         C     Am       Dm7             G7       C    G///
+         C     Am       Dm7             G7       C    G
 I want a dream lover so I won't have to dream alone.
 
 
@@ -17,7 +19,7 @@ C                            Am
 Dream lover, where are you - with a love oh so true,
 C                              Am
 And a hand that I can hold, to feel you near when I grow old?
-          C    / /     G7  / /     C    / /     F
+          C         G7       C         F
 Because I want      a girl      to call      my own
          C     Am       Dm7             G7       C     C7
 I want a dream lover so I won't have to dream alone.
@@ -41,7 +43,7 @@ C                        Am
 Dream lover, until then, I'll go to sleep and dream again
 C                            Am
 That's the only thing to do, until my lover's dreams come true
-          C    / /    G7   / /     C    / /     F
+          C        G7        C         F
 Because I want      a girl      to call      my own
          C     Am       Dm7             G7       C
 I want a dream lover so I won't have to dream alone.

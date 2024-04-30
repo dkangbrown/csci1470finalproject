@@ -1,4 +1,8 @@
-Intro: C Am C Am
+[Root] C
+
+Intro:
+ 
+C Am C Am
 
     C                 Am
 I heard there was a secret chord

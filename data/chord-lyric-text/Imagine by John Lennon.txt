@@ -1,3 +1,5 @@
+[Root] C
+
 [Intro]
 
 | C    Cmaj7 |  F  | 

@@ -1,4 +1,6 @@
-EA AE EA EE
+[Root] A
+
+E A A E E A E E
 
 ---------------------------------------|
 -------3-3-3-2-------------------------|
@@ -7,7 +9,7 @@ EA AE EA EE
 ---0---------0---0--0---0--------------|
 ---------------------------------------|
 
-[VERSE I:]
+[VERSE I]
  A               E            F#m                   D
  When I was a young boy,       said put away those young boy ways
 A                     E                      F#m                 D
@@ -25,7 +27,7 @@ Sometimes love don't feel like it should.  You make it . . . hurt so good.
 
 Repeat Intro Riff 2x
 
-[VERSE II:]
+[VERSE II]
 A                        E        F#m                      D
 Don't have to be so exiting. Just tryin' to give myself a little bit of fun, yeah.
 A               E            F#m                     D

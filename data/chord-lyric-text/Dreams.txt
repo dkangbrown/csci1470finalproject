@@ -1,4 +1,6 @@
-F G  4x
+[Root] F
+
+F G  
 
 F            G         F                     G
 Now here you go again, you say you want your freedom;

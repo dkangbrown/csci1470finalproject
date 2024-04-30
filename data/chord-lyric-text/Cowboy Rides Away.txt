@@ -1,4 +1,6 @@
-G C D G // G C D G
+[Root] G
+
+G C D G G C D G
 
    G                                         C
 I knew the stakes were high right from the start,

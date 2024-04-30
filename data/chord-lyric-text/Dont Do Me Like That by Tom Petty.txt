@@ -1,4 +1,6 @@
-Intro: G Fmaj9 C D G Fmaj9 C D
+[Root] G
+
+G Fmaj9 C D G Fmaj9 C D
 
          G
 {Verse:} I was talkin' with a friend of mine,

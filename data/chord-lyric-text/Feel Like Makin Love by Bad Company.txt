@@ -1,4 +1,6 @@
-Intro:  D / C
+[Root] D
+
+D  C
 
 D		      G
 Baby, When I think about you
@@ -22,9 +24,9 @@ In the heaven
 Till I'm dying (voices)
 	 G
 On the way
-			C-D   C-D
+			C D   C D
 Ch;	Feel like making -- -- -- --
-        G	  D      C-D   C-D
+        G	  D      C D   C D
 	Feel like making love(3)
 		  C	 G 	 D
 	Feel like making love to you

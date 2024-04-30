@@ -1,3 +1,5 @@
+[Root] Gm
+
 Gm      C Gm   Gm      C Gm
 Gm                       C Gm
 When you're down and out

@@ -1,6 +1,8 @@
-A D A D6 (x4)
+[Root] A
 
-A B C# E F# A A F# A C#  (Horn Riff)
+A D A D6
+
+A B C# E F# A A F# A C#
 
         A         D               A       D A                 D              A        D
           Don't want to discuss it  -  I think it's time for a change
@@ -17,14 +19,11 @@ A B C# E F# A A F# A C#  (Horn Riff)
                                     Bm  E   A     D   A  D
                            I said oh, oh, Domino
                                     Bm  E   A     D  A D
-                           I said oh, oh, Domino   -   dig it
-                                                                               A riff
-
+                           I said oh, oh, Domino   -   dig it                                                                            A riff
           There's no need for argument - there's no argument at all
           And if you never hear from him - that just means he didn't call
           Or vice-a-versa - that depends on where ever you're at
           And if you never hear from me - that just means I would rather not
-
                            Oh, oh, Domino - roll me over, Romeo, there you go
                            Lord have mercy, I said
                            Oh, oh, Domino - roll me over, Romeo, there you go

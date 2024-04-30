@@ -1,4 +1,4 @@
-[Intro]
+[Root] E
 
 E A E A
 

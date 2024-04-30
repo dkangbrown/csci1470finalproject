@@ -1,4 +1,4 @@
-[Intro]
+[Root] C
 
 C     Am     Dm    G      C     Am     Dm    G     C
 Oh... Donna, oh... Donna, oh... Donna, oh... Donna.

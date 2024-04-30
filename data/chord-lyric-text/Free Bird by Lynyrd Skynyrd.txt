@@ -1,3 +1,5 @@
+[Root] G
+
 G    D            Em 
 If I leave here tomorrow
 F         C              D

@@ -1,4 +1,7 @@
-Intro: D   
+[Root] D
+
+Intro: 
+D   
 
 D                           G7
 I've been down hearted, baby

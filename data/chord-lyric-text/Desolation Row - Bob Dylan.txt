@@ -1,3 +1,5 @@
+[Root] D
+
 [Verses]
 D
 They're selling postcards of the hanging.

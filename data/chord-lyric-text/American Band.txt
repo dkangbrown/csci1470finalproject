@@ -1,6 +1,6 @@
 [Root] D
 
-D C Bb C D   D D C G DD Bb 
+D C Bb C D   D D C G D D Bb 
 
 D                   
 Out on the road for forty days 
@@ -31,7 +31,7 @@ We'll help you party it down
           D
 We're an American band 
 
-D D C G DD Bb
+D D C G D D Bb
 
 D
 Four young chiquitas in Omaha 
@@ -110,7 +110,7 @@ Version 2
 
 Capo III  
 
-B A G A B   B B A E BB A G
+B A G A B   B B A E B B A G
 
 B                   
 Out on the road for forty days 
@@ -141,7 +141,7 @@ We'll help you party it down
           B
 We're an American band 
 
-B B A E BB A G
+B B A E B B A G
 
 B
 Four young chiquitas in Omaha 

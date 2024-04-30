@@ -1,3 +1,4 @@
+[Root] C
 
 Dm           C
 You say yes, I say no 

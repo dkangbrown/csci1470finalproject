@@ -1,3 +1,5 @@
+[Root] G
+
 #1.
 G
 Good Golly Miss Molly, sure like to ball.

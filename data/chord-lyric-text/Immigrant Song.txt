@@ -1,3 +1,5 @@
+[Root] A
+
 [Intro]
 
   F#m

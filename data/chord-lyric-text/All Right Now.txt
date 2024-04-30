@@ -1,7 +1,8 @@
 [Root] A
 
-A  D\A  Dsus2 A oh oh   
-A  D\A  Dsus2 A
+A  D/A  Dsus2 A 
+oh oh   
+A  D/A  Dsus2 A
 
           A         D   A
 There she stood, in the street;
@@ -26,7 +27,7 @@ All right now, baby, it's all right now
 A   D     A               G   D     A
 All right now, baby, it's all right now.
 
-A  D\A                Dsus2 A
+A  D/A                Dsus2 A
    Let me tell you now
 
            A        D  A
@@ -52,12 +53,12 @@ All right now, baby, it's all right now
 A   D     A               G   D     A
 All right now, baby, it's all right now.
 
-A D A  D A  G D A  G D A  A D A  D A..solo
-
+A D A  D A  G D A  G D A  A D A  D A
+..solo
 Oh yeh
-
-A  D\A  Dsus2 A  let me tell you all about it   
-A  D\A  Dsus2 A  
+A  D/A  Dsus2 A  
+let me tell you all about it   
+A  D/A  Dsus2 A  
 
            A        D  A
 I took her home, to my place;

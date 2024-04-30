@@ -1,4 +1,8 @@
-Intro: Am, F, C, G    C,    G
+[Root] C
+
+Intro: 
+
+Am F C G    C    G
 
  C
 Someone told me long ago

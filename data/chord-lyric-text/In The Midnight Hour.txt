@@ -1,3 +1,4 @@
+[Root] A
 
 D  B    A  G
 E  A  E  A  2x

@@ -1,4 +1,3 @@
-
 [Root] A
 
 [Chorus 1]

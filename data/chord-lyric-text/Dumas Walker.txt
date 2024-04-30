@@ -1,6 +1,10 @@
-Intro:  G7
+[Root] G
+
+Intro:  
+G7
 	Welll
-Chorus:           G
+Chorus:           
+G
 	Let's all go,   down to Dumas Walker
 		  C                   G
 	Let's all go,   down to Dumas Walker
@@ -9,7 +13,8 @@ Chorus:           G
 	G (stop)                           G (C-C#-D)
 	bring it on out to my baby and me
 
-Verse1: G
+Verse1: 
+G
 	yeah we're headed to the drive-in on a Saturday night
 	just me and my baby and a six-pack of Lite
 	      C

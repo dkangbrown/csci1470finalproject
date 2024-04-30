@@ -1,4 +1,4 @@
-Capo on 1st fret, all chords are relative 
+[Root] E
 
 [Verse]
 
@@ -17,9 +17,9 @@ without hiding.  You must help me if you can
 
 C#m               E
 Doctor, my eyes, tell me what is wrong
-        C#m                 B             A, E,  D/E, A/E, E
+        C#m                 B             A
 Was I unwise to leave them open for so long
-
+E D/E A/E E
 
 [Verse]
 
@@ -39,9 +39,9 @@ I got this feeling, that it's later than it seems
 
 C#m                E
 Doctor, my eyes, tell me what you see
-C#m                              B              D/E**, A,(E,D/E,A/E,E rept)
+C#m                              B              D/E
 I hear their cries, just say if it's too late for me
-
+E D/E A/E E
 
 [Instrumental break]
 
@@ -50,7 +50,7 @@ I hear their cries, just say if it's too late for me
 
 C#m              E
 Doctor, my eyes cannot see the sky
-C#m                           B                  A, E,D/E, /E, E 
+C#m                           B                  A E D/E E E 
 Is this the prize for having learned how not to cry
 
 

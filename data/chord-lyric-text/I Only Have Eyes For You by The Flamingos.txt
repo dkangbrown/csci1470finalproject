@@ -1,3 +1,5 @@
+[Root] C
+
 [Intro]
 
 Bb7, G  D,

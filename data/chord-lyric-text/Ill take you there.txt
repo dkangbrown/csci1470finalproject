@@ -1,5 +1,6 @@
-F,C
+[Root] F
 
+F C
 Oh mmm I know a place 
 Ain't nobody cryin' 
 Ain't nobody worried 

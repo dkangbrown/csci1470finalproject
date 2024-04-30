@@ -1,3 +1,5 @@
+[Root] D
+
 [Verse]
 
 A7              D7

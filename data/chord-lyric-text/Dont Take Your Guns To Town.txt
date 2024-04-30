@@ -1,4 +1,4 @@
-Intro: A   A 
+[Root] A
                                                                                      
   A                                  E                  A
 A young cowboy named Billy Joe grew restless on the farm,

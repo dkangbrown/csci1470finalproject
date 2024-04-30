@@ -1,6 +1,6 @@
-[Intro]
+[Root] Am
 
-Am G F G  2x
+Am G F G
 
 
 [Verse]
@@ -29,7 +29,7 @@ Baby I'm your man...
 Am G F  G  Am 
 La   la la la  2x
 
-Am G F G  2x
+Am G F G 
 
 
 [Verse]
@@ -67,7 +67,7 @@ La   la la la  2x
 
 [Break]
 
-Am G F G  2x
+Am G F G 
 
 
 [Verse]

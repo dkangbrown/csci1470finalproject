@@ -1,3 +1,5 @@
+[Root] Am
+
 [Intro]
 
 Am  C  D  F  

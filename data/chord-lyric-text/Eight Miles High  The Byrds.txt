@@ -1,3 +1,5 @@
+[Root] C 
+ 
  Em          G   D              C              G
  Eight miles high, and when you touch down.
 

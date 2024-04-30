@@ -1,6 +1,8 @@
-G E 2x
+[Root] E
 
-    E A 2x
+G E 
+
+    E A 
 Hey!
         E             A
 Well my temperature's rising
@@ -34,9 +36,9 @@ Gimme some lovin' (gimme, gimme some lovin)
            A           E
 Gimme some lovin' everyday.
 
-G E  2x
+G E  
 
-    E A 2x
+    E A 
 Hey!
        E       A
 Well I feel so good
@@ -70,9 +72,9 @@ Gimme some lovin' (gimme, gimme some lovin)
            A           E
 Gimme some lovin' everyday.
 
-G E  2x
+G E  
 
-    E A 2x
+    E A 
 Hey!
        E       A
 Well I feel so good

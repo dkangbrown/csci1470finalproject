@@ -1,3 +1,5 @@
+[Root] G
+
 [Verse]
      G
 Well you done done me and you bet I felt it,

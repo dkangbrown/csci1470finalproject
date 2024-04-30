@@ -1,3 +1,5 @@
+[Root] F
+
 [Verses]
 F          F                  Bb       
 I     am a man    of constant sorrow

@@ -1,4 +1,4 @@
-[Intro:]
+[Root] Em
 
 Em    G     A     Am
 Em    G     A     Am

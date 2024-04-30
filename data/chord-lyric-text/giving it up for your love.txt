@@ -1,13 +1,14 @@
+[Root] C
 
-Intro – C  F  4X
+C  F   
 
 Chorus
 C                        Gm7 F
-Givin' it up for your love – everything
+Givin' it up for your love  everything
 C                        Gm7 F
 Givin' it up for your love right now
 C                        Gm7 F
-Givin' it up for your love – everything
+Givin' it up for your love  everything
 C                        Gm7 F
 Givin' it up for your love right now
 
@@ -64,4 +65,4 @@ I'm doing all right, doing all right so far
 
 
 
-Chorus – Repeat and fade
+Chorus  Repeat and fade

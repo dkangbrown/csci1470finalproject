@@ -1,3 +1,5 @@
+[Root] C
+
      C     C7            F            Fm
 Desperado, why don't you come to your senses
             C          Am

@@ -1,3 +1,5 @@
+[Root] C
+
 C   C   F   F   Fmaj7   Em7   Dm7   G7
 
 
