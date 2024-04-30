@@ -1,6 +1,6 @@
 [Root] A
 
-   A  G G  D  A A (3x)
+   A  G G  D  A A
 
 
    A             G G     D     A A

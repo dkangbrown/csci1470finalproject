@@ -1,8 +1,7 @@
 [Root] D
 
 D  C
-
-D		      G
+D      G
 Baby, When I think about you
 		D	G
 I think about love ( 3 voices)
@@ -30,7 +29,8 @@ Ch;	Feel like making -- -- -- --
 	Feel like making love(3)
 		  C	 G 	 D
 	Feel like making love to you
-D etc.
+D 
+etc.
 Baby, If I think about you
 I think about love
 Darling, If I live without you
@@ -44,8 +44,10 @@ Love satisfying
 
 Repeat chorus-
 
-Guitar instru:  D / G / D / G (twice).
-       D  etc.
+Guitar instru:  
+D  G  D  G 
+       D  
+	   etc.
 And if I had
 Those golden dreams
 Of my yesterdays

@@ -3,8 +3,6 @@ import os
 import sys
 import json
 import logging
-import string
-import io
 
 # Regex
 import re
@@ -31,25 +29,3 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 import tensorflow as tf
 import tensorflow.keras as keras
 import tensorflow.keras.layers as layers
-
-# keras
-from keras.models import Sequential
-from keras.layers import Dense, LSTM, Embedding, Dropout, Bidirectional
-from keras.optimizers import Adam, Adamax
-from keras.preprocessing.text import Tokenizer
-
-# NLP
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
-from nltk.probability import FreqDist
-from nltk import ngrams
-
-# For images
-from PIL import Image
-from IPython.display import display
-
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from tensorflow.keras.callbacks import LambdaCallback, ModelCheckpoint, EarlyStopping

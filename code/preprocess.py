@@ -6,9 +6,8 @@ def preprocess_song(file_path):
         lines = file.readlines()
 
     # Regular expressions to identify chords and tabs
-    chord_regex = re.compile(r"^[(]?[A-G][#b]?m?(maj7|maj|min7|min|7|sus2|sus4|7sus2|7sus4)?/?[A-G]?[)]?$")
-    chord_prths_regex = re.compile(r"^[(][A-G][#b]?m?(maj7|maj|min7|min|7|sus2|sus4|7sus2|7sus4)?/?[A-G]?[)]$")
-    section_regex = re.compile(r"^(\[|#)?(chorus|Chorus|CHORUS|verse|Verse|VERSE|intro|Intro|INTRO|outro|Outro|OUTRO|bridge|Bridge|BRIDGE|interlude|Interlude|INTERLUDE|instrumental|Instrumental|INSTRUMENTAL|solo|Solo|SOLO)*( )?[0-9]*(\]|\:|\.)?$")
+    chord_regex = re.compile(r"^[A-G][#b]?m?(7|5|M|maj7|maj|M7|min7|m7|min|dim|dim7|aug|\+|sus2|sus4|7sus2|7sus4)?(add)?[0-9]*/?[A-G]?$")
+    section_regex = re.compile(r"^(\(|\[)?[\#]?(chorus|Chorus|CHORUS|verse|Verse|VERSE|intro|Intro|INTRO|outro|Outro|OUTRO|bridge|Bridge|BRIDGE|interlude|Interlude|INTERLUDE|instrumental|Instrumental|INSTRUMENTAL|solo|Solo|SOLO)*( )?[0-9]*(\:|\.)?(\]|\))?$")
     accidental_regex = re.compile(r"^\w[#b]")
 
     current_section = None
@@ -38,17 +37,18 @@ def preprocess_song(file_path):
     qual_to_num = {
         '': 0,
         '5': 0,
-        'maj': 0,
         'M' : 0,
-        'm': 1,
-        '+': 2,
-        'aug': 2,
-        'dim': 3,
-        '7': 4,
-        'maj7': 5,
-        'M7': 5,
-        'min7': 6,
-        'm7': 6,
+        'maj7': 1,
+        'maj': 1,
+        'M7': 1,
+        '7': 2,
+        'm': 3,
+        'min7': 4,
+        'm7': 4,
+        'dim': 5,
+        'dim7':5,
+        '+': 6,
+        'aug': 6,
         'sus2': 7,
         'sus4': 8,
         '7sus2': 7,
@@ -119,15 +119,14 @@ def preprocess_song(file_path):
 
     def get_chord_list(line):
         line = line.strip()
-        line = line.replace('%|','')
         chord_list = line.split(" ")
-        chord_list = [x for x in chord_list if x and not(chord_prths_regex.match(x))]
+        chord_list = [x for x in chord_list if x]
         print(f"chord list: {chord_list}")
         chord_list = [chord_to_vector(x) for x in chord_list]
         return chord_list
 
     for line in lines:
-        line = line.strip()
+        line = line.strip().replace('|',' ').replace('(',' ').replace(')',' ').replace('-',' ').replace('%',' ').replace('\t',' ').replace('\\','/').replace('/ ',' ').replace('*',' ').replace('@',' ').replace('x2',' ').replace('x3',' ').replace('x4',' ').replace('x5',' ').replace('x6',' ').replace('x7',' ').replace('x8',' ')
         # print(f"line: {line}")
         if section_regex.match(line):
             # print(f"section regex match; isbreak = {isbreak}")
@@ -155,11 +154,12 @@ def preprocess_song(file_path):
     # chords are in the format [0-11 (root pitch), 0-11 (base pitch), 0-7 (quality)]
     return [x for x in verses if x['chords']]
 
-Path = "data/"
+Path = "data/chord-lyric-text/"
 filelist = os.listdir(Path)
 preprocessed_pairs = []
+file_name = re.compile(r"^([A-R]|[a-r])")
 for i in filelist:
-    if i.endswith(".txt") and (i.startswith('A') or i.startswith('a')):
+    if i.endswith(".txt") and file_name.match(i):
         print(i)
         song_data = preprocess_song(Path + i)
         print(song_data)
