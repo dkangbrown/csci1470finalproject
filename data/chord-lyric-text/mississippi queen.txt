@@ -1,6 +1,6 @@
+[Root] A
 
-
-B       A x2
+B       A 
 
 
 [Verse 1]

@@ -1,4 +1,5 @@
-(Verse 1)
+[Root] D
+
 D
 Livin' on the road, my friend
 A
@@ -15,6 +16,7 @@ Bm                               G        A
 She began to cry when you said good bye
 G                   Bm
 And sank into your dreams
+
 (Verse 2)
 D
 Pancho was a bandit, boys
@@ -32,6 +34,7 @@ Bm                      G     A
 No one heard his dyin' words
 G                   Bm
 But that's the way it goes
+
 (Chorus)
 G
 And all the federales say
@@ -41,6 +44,7 @@ Bm                 G    A
 They only let him slip away
        G               Bm
 Out of kindness, I suppose
+
 (Verse 3)
 D
 Now Lefty he can't sing the blues
@@ -58,7 +62,9 @@ Bm                      G           A
 Where he got the bread to go
 G                     Bm
 Well there ain't nobody 'knows
+
 (Chorus)
+
 (Verse 4)
 D
 Now poets sing how Pancho fell
@@ -76,8 +82,11 @@ Bm                          G        A
 He only did what he had to do
 G                   Bm
 And now he's growin' old
+
 (Chorus)
+
 (Final Chorus)
+
 D
 Yes a few old gray federales still say
 D                            G

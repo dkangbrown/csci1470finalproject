@@ -1,3 +1,5 @@
+[Root] C
+
 C
 Rock me baby, honey, rock me all night long
 F                                      C

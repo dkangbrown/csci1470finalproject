@@ -1,3 +1,5 @@
+[Root] E
+
 INTRO:  E G A   B7 D B7
 
 #1.

@@ -1,3 +1,5 @@
+[Root] G
+
 e|-10---|
 B|-11---|
 G|-11---|
@@ -6,30 +8,30 @@ A|------|
 E|------|
 
 
-                         G   (strum)
+                         G   
 Riding along in my automobile
-                              (strum)
+                              
 My baby beside me at the wheel
-                                C   (strum)
+                                C   
 I stole a kiss at the turn of a mile
-                     G   (strum)
+                     G   
 My curiosity running wild
-                             D (strum)
+                             D 
 Cruising and playing the radio
-                            G  (strum)
+                            G  
 With no particular place to go.
 
-                         G   (strum)
+                         G   
 Riding along in my automobile
-                                         (strum)
+                                         
 I was anxious to tell her the way I feel,
-                            C   (strum)
+                            C   
 So I told her softly and sincere,
-                                   G  (strum)
+                                   G  
 And she leaned and whispered in my ear
-                          D    (strum)
+                          D    
 Cuddling more and driving slow,
-                            G  (strum)
+                            G  
 With no particular place to go.
 
 G C G D G
@@ -38,24 +40,24 @@ G C G D G
 No particular place to go,
                                   
 So we parked way out on the Kokomo
-                                     C   (strum)
+                                     C   
 The night was young and the moon was gold
-                             G     (strum)
+                             G     
 So we both decided to take a stroll
-                          D    (strum)
+                          D    
 Can you imagine the way I felt?
-                               G    (strum)
+                               G    
 I couldn't unfasten her safety belt!
 
-                       G    (strum)
+                       G    
 Riding along in my calaboose
-                                  (strum)
+                                  
 Still trying to get her belt loose
-                          C      (strum)
+                          C      
 All the way home I held a grudge,
-                                  G    (strum)
+                                  G    
 For the safety belt that wouldn't budge
-                             D (strum)
+                             D 
 Cruising and playing the radio
                             G  
 With no particular place to go.

@@ -1,3 +1,5 @@
+[Root] E
+
 E
      If I could stick my pen in my heart
      I would spill it all over the stage

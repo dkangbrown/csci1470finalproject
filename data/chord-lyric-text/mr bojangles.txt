@@ -1,3 +1,4 @@
+[Root] C
 
  [Lick1]    [Lick2]       G/B
 e-------|  e--------|  e---X-----|
@@ -11,44 +12,44 @@ E-3-----|  E-3-2-1--|  E---X-----|
 
 [Intro]
 
-[Lick1] C    G/B   Am    x2
+ C    G/B   Am    
 
 
 [Verse]
 
-C              G/B               Am           [Lick1[
+C              G/B               Am           
 I knew a man Bojangles and he'd dance for you 
-F           G     [Lick1]
+F           G    
 In worn out shoes
-C                   G/B              Am           [Lick1]
+C                   G/B              Am          
 With silver hair, a ragged shirt, and baggy pants
-F            G    [Lick2]
+F            G    
 The old soft shoe 
 F            Em              Am    
 He jumped so high, jumped so high
-D7              G7           [Lick1]
+D7              G7        
 Then he lightly touched down
 
-C              G/B               Am        [Lick1]
+C              G/B               Am       
 I met him in a cell in New Orleans I was 
-F        G  [Lick1]
+F        G  
 down and out
-C                G/B          Am           [Lick1]
+C                G/B          Am
 He looked to me to be the eyes of age
-F                 G  [Lick2]
+F                 G  
 as he spoke right out 
 F            Em              Am   D7
 He talked of life, talked of life, he laughed
-                      G7      [Lick1]
+                      G7      
 clicked his heels and stepped
  
-C                 G/B               Am           [Lick1]
+C                 G/B               Am          
 He said his name "Bojangles" and he danced a lick 
-F          G    [Lick1]
+F          G    
 across the cell
-C                        G/B                            Am      [Lick1]
+C                        G/B                            Am   
 He grabbed his pants and spread his stance,Oh he jumped so high 
-F                       G     [Lick2]
+F                       G    
 and then he clicked his heels 
 F           Em              Am
 He let go a laugh, let go a laugh
@@ -60,32 +61,32 @@ and shook back his clothes all around
 
 Am    G        Am     G
 Mr. Bojangles, Mr. Bojangles
-Am    G        C     G/B  Am [Lick1]
+Am    G        C     G/B  Am 
 Mr. Bojangles, dance
 
 
 [Verse]
 
-C                 G/B               Am           [Lick1]
+C                 G/B               Am           
 He danced for those at minstrel shows and county fairs
-F          G    [Lick1]
+F          G   
 throughout the south
-C                        G/B                            Am      [Lick1]
+C                        G/B                            Am  
 He spoke through tears of 15 years how his dog and him
-F                       G     [Lick2]
+F                       G     
 traveled about
 F           Em              Am
 The dog up and died, he up and died
 D7                             G7 
 And after 20 years he still grieves 
 
-C                 G/B               Am           [Lick1]
+C                 G/B               Am           
 He said I dance now at every chance in honky tonks
-F          G    [Lick1]
+F          G  
 for drinks and tips
-C                        G/B                            Am      [Lick1]
+C                        G/B                            Am   
 But most the time I spend behind these county bars
-F                       G     [Lick2]
+F                       G
 'cause I drinks a bit
 F           Em              Am
 He shook his head, and as he shook his head
@@ -97,5 +98,5 @@ I heard someone ask him please
 
 Am    G        Am     G
 Mr. Bojangles, Mr. Bojangles
-Am    G        C     G/B  Am [Lick1]
+Am    G        C     G/B  Am 
 Mr. Bojangles, dance

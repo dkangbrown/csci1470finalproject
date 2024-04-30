@@ -1,4 +1,6 @@
-G D 2x
+[Root] G
+
+G D 
 
 G            D
 He had white horses

@@ -1,9 +1,9 @@
-E , A  - x 4
+[Root] E
 
 E                            A  
-Don’t you feel it growin’, day by day
+Donï¿½t you feel it growin', day by day
 E                           C#m
-People gettin’ ready for the news
+People gettin' ready for the news
 	B               A
 Some are happy, some are sad
 A                         E ,A
@@ -11,15 +11,15 @@ Oh, we got to let the music play
 E
 What the people need
 	              A
-Is a way to make ’em smile
+Is a way to make 'em smile
 E                            C#m
-It ain’t so hard to do if you know how
+It ain't so hard to do if you know how
 	B
 Gotta get a message
 		A
 Get it on through
 A                             E
-Oh now mama, don’t you ask me why
+Oh now mama, don't you ask me why
 
 C#m7		   A
 Oh, oh, listen to the music
@@ -30,7 +30,7 @@ Oh, oh, listen to the music
 	F#7      A
 All the time
 
-E, A – x 2
+E, A  x 2
 
 E
 Well I know, you know better
@@ -39,20 +39,20 @@ Everything I say
 E                            C#m
 Meet me in the country for a day
 	B
-We’ll be happy
+We'll be happy
 	A
-And we’ll dance
+And weï¿½ll dance
 
 A                                E A
-Oh, we’re gonna dance our blues away
+Oh, we're gonna dance our blues away
 E
-And if I’m feelin’ good to you
+And if I'm feelin' good to you
                            A
-And you’re feelin’ good to me
+And you're feelin' good to me
 E                                 C#m
-There ain’t nothin’ we can’t do or say
+There ain't nothin' we can't do or say
 	B	A
-Feelin’ good, feeling fine
+Feelin' good, feeling fine
 A			E
 Oh, baby, let the music play
 
@@ -73,7 +73,7 @@ Surrounding castles in the sky
 E                       D
 And the crowd is growing bigger
 A                           
-List’nin’ for the happy sounds
+Listening for the happy sounds
 A                                     
 And I got to let them fly
 

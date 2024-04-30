@@ -1,3 +1,5 @@
+[Root] G
+
 [Intro]
                              
 || G G G G | G/F G/F G/F G/G ||x2  G

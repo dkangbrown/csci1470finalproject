@@ -1,3 +1,5 @@
+[Root] A
+
 #1.
 A                                                 A G Ab A
 You know the land-lady's ringin' my frontdoor bell.

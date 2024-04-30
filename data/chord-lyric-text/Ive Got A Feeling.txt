@@ -1,3 +1,5 @@
+[Root] A
+
 A           D          A               D  
 
 I've got a feeling, a feeling deep inside

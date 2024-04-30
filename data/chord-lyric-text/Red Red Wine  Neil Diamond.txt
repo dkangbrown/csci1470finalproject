@@ -1,3 +1,5 @@
+[Root] D
+
 D       G   C D
 Red red wine,
          G   C D

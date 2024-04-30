@@ -1,3 +1,4 @@
+[Root] E
 
 [Verse]
 
@@ -11,7 +12,7 @@ Actin' funny, but I don't know why
 
 [Bridge]
 
-E                               RIFF
+E                         
 'Scuse me while I kiss the sky
 
 
@@ -27,7 +28,7 @@ Am I happy or in misery?
 
 [Bridge]
 
-E                                          RIFF
+E                                        
 What ever it is, that girl put a spell on me
 
 

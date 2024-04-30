@@ -1,3 +1,5 @@
+[Root] G
+
 [Verse]
 G              G                     G
 Rock me baby, rock me all night long

@@ -1,3 +1,5 @@
+[Root] D
+
 [Verse]
 
 D      A    Bm     G     A    D 

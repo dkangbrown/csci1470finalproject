@@ -1,4 +1,4 @@
-[Intro]
+[Root] Eb
 
 Bbadd9/D   Gm7add11   F   Eb
 
@@ -36,7 +36,7 @@ F                                                  Bbsus2
 Bbsus2                                Gm7
    Baby I could never steal you from another
 F                                          Bbsus2
-   It’s such a shame our friendship had to end
+   Itï¿½s such a shame our friendship had to end
 
 
 [Chorus]

@@ -1,3 +1,5 @@
+[Root] A
+
 [verse 1]
 
 A                         F#m

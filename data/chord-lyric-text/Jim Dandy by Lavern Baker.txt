@@ -1,9 +1,10 @@
-INTRO: F
+[Root] F
+
+F
 F
 Wah-oom, wah-oom, wah-oom...
 F
 Jim Dandy to the rescue..Jim Dandy to the rescue..
-
 Jim Dandy to the rescue..go, Jim Dandy..go, Jim Dandy.
 
 #1.
@@ -25,10 +26,8 @@ Jim Dandy to the rescue..go, Jim Dandy..go, Jim Dandy.
 CHORUS:
 F
 Jim Dandy to the rescue..Jim Dandy to the rescue.
-
 Jim Dandy to the rescue..go, Jim Dandy..go.
-
-(INTERLUDE:SAX:) F Bb F C F
+F Bb F C F
 
 #3.
 F

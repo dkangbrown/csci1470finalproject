@@ -1,3 +1,5 @@
+[Root] G
+
 [Verse]
 
 G    C      F  G

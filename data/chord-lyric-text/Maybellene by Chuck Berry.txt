@@ -1,3 +1,5 @@
+[Root] A
+
 [Chorus]
 Maybellene, why can't you be true
           D7                     A

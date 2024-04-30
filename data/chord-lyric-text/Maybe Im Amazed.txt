@@ -1,3 +1,5 @@
+[Root] A
+
 [Intro]
 
 A  D/F#  Dm/F  Em7  A

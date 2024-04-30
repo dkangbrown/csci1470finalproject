@@ -1,4 +1,4 @@
-[Intro]
+[Root] E
 
 F#m A   A E   F#m A   A E   F#m   F#m E   F#m A   A E  
 

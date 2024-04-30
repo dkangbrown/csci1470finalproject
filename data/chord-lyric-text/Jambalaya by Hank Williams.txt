@@ -1,3 +1,5 @@
+[Root] C
+
 [Verse 1]
     C                            G7
 Goodbye, Joe, me gotta go, me oh my oh
@@ -10,7 +12,7 @@ Son of a gun, gonna have big fun on the bayou
  
 [Chorus]
    C                                  G7
-Jambalaya and a crawfish pie and filé gumbo
+Jambalaya and a crawfish pie and filï¿½ gumbo
        G7                                C                                       
 'Cause tonight I'm gonna see my ma chers amio
      C                             G7
@@ -30,7 +32,7 @@ Son of a gun, gonna have big fun on the bayou
 
 [Chorus]
    C                                  G7
-Jambalaya and a crawfish pie and filé gumbo
+Jambalaya and a crawfish pie and filï¿½ gumbo
        G7                                C                                       
 'Cause tonight I'm gonna see my ma chers amio.
      C                             G7
@@ -50,7 +52,7 @@ Son of a gun we'll have big fun on the bayou
 
 [Chorus]
    C                                  G7
-Jambalaya and a crawfish pie and filé gumbo
+Jambalaya and a crawfish pie and filï¿½ gumbo
        G7                                C                                       
 'Cause tonight I'm gonna see my ma chers amio.
      C                             G7

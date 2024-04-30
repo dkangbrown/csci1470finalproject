@@ -1,3 +1,5 @@
+ [Root] A
+ 
  A      
      When the sun goes down on my side of town that lonesome feeling comes to my door 
               D                    A 

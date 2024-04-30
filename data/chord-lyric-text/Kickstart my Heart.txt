@@ -1,3 +1,5 @@
+[Root] Am
+
 [Intro]
 G G# Am G G# Am
 Am G  D D/F D

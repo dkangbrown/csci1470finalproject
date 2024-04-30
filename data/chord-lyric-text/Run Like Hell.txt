@@ -1,4 +1,6 @@
-[Intro]
+[Root] D
+
+
 D  A/D     Dsus  D    G6/D  G/D     D(9)  D
 D  A/D     Dsus  D    G6/D  G/D     D(9)  D
 

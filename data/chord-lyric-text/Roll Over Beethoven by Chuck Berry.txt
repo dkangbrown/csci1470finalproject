@@ -1,42 +1,44 @@
-[Intro]   | D  | D  | D  | D  |
-          | G  | G  | D  | D  |
-          | A  | A  | D  | D  |
+[Root] D
+
+D   D   D   D  
+           G   G   D   D  
+           A   A   D   D  
 
 
                      D
-[Verse 1]  I’m gonna write a little letter
+[Verse 1]  I'm gonna write a little letter
                G                   D
          Gonna mail it to my local DJ.
                 G
-         It’s a rockin’ rhythm record
+         It's a rockin' rhythm record
            G                 D
          I want my jockey to play.
               A                 A                        D
-         Roll over Beethoven, I gotta hear it again to – day.
+         Roll over Beethoven, I gotta hear it again to ' day.
 
 
                         D
-[Verse 2]  You know, my temperature’s risin,
+[Verse 2]  You know, my temperature's risin,
                  G                D    D
          And the juicebox blows a fuse.
             G 
-         My heart’s beatin’ rhythm
+         My heart's beatin' rhythm
                 G                         D
-         And my soul keeps on singin’ the blues.
+         And my soul keeps on singin' the blues.
               A                   A                     D
          Roll over Beethhoven and tell Tchaikovsky the news.
 
 
                      D  
-[Verse 3]  I got the rockin’ Pheumonia
+[Verse 3]  I got the rockin' Pheumonia
            G                         D
          I need a shot of rhythm and blues.
                       G
-         I caught the rollin’ arthiritus
+         I caught the rollin' arthiritus
                  G                       D
-         Sittin’ down by thr rhythm re – view.
+         Sittin' down by thr rhythm re ' view.
               A                                 D
-         Roll over Beethoven they’re rockin’ in two by two.
+         Roll over Beethoven they're rockin' in two by two.
 
 
                         D
@@ -55,19 +57,20 @@
          Roll over Beethoven dig these rhythm and blues.
 
 
-Guitar solo  | D  | D  | D  | D  |
-             | G  | G  | D  | D  |
-             | A  | G  | D  | D  |
+Guitar solo   
+D   D   D   D  
+              G   G   D   D  
+              A   G   D   D  
 
 
                  D                          G
-[Verse 5]  Well, early in the mornin’ I’m a-givin’ you a warnin’
+[Verse 5]  Well, early in the mornin' I'm a-givin' you a warnin'
                    D
-         Don’t you step on my blue suede shoes.
+         Don't you step on my blue suede shoes.
          G                       G
-         Hey diddle diddle, I am playin’ my fiddle,
+         Hey diddle diddle, I am playin' my fiddle,
          D
-         Ain’t got nothin’ to lose.
+         Ain't got nothin' to lose.
               A                                       D
          Roll over Beethoven and tell Tchaikovsky the news.
 
@@ -75,21 +78,21 @@ Guitar solo  | D  | D  | D  | D  |
                         D
 [Verse 6]  You know she wiggles like a glow worm,
          G                     D
-         Dance like a spinnin’ top.
+         Dance like a spinnin' top.
                    G
          She got a crazy partner,
                                  D
-         Oughta see ‘em reel and rock.
+         Oughta see 'em reel and rock.
                  A                                        D
          Long as she got a dime the music will never stop.
 
 
                             D
-[Outro]    Roll over Beet – hoven,                          
-         Roll over Beet – hoven,
+[Outro]    Roll over Beet ' hoven,                          
+         Roll over Beet ' hoven,
                           G
-         Roll over Beet – hoven,
+         Roll over Beet ' hoven,
                           D
-         Roll over Beet – hoven,
+         Roll over Beet ' hoven,
                           A                              D9
-         Roll over Beet – hoven and dig these rhythm and blues.
+         Roll over Beet ' hoven and dig these rhythm and blues.

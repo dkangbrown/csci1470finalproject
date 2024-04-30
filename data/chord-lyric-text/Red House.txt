@@ -1,3 +1,5 @@
+[Root] Bb
+
 [Verse]
 Bb7  
 There's a Red House over yonder

@@ -1,4 +1,4 @@
-[Verse]
+[Root] A
 
 E+    A                E
 Oh___ darling please believe me

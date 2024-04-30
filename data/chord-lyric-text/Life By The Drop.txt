@@ -1,3 +1,5 @@
+[Root] A
+
 [Verse]
 
 A            E             

@@ -1,3 +1,5 @@
+[Root] C
+
 [Intro]
 
 C G A D    C G A D
@@ -54,7 +56,7 @@ Sometimes I get so tense
       G
 But I can't speed up the time
     A
-But’you know love, there's one more thing
+Butï¿½you know love, there's one more thing
        D   Dsus2 D  Dsus4  D  Dsus2  D
 To consider
 
@@ -65,7 +67,7 @@ Sad woman take it slow
     C                    Em
 And things will be just fine
 C                 G             D      Dsus2 D  Dsus4  D  Dsus2  D
-You and I’ll just use a little patience
+You and Iï¿½ll just use a little patience
 C         G
 Sad sugar take the time
            C                   Em
@@ -117,7 +119,7 @@ Just trying to get it right
 D
 It's hard to see with so many around
    G
-Ya know I don’t like being stuck in the crowd
+Ya know I donï¿½t like being stuck in the crowd
         D
 And the streets don't change but baby the name
 G

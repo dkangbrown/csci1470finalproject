@@ -1,4 +1,4 @@
-[Chorus]
+[Root] G
 
 G           F       C      G
 Lord I was born a Ramblin' man

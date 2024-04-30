@@ -1,3 +1,5 @@
+[Root] D
+
     D
 1. I grew up dreaming of being a cowboy
 2. Cowboys are special with their own brand of misery

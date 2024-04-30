@@ -1,4 +1,4 @@
-[Intro]
+[Root] G
 
 G  Em7  Cadd9  D
 

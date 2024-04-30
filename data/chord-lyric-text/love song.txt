@@ -1,28 +1,31 @@
-[Intro] (Am, G, F, Em)
+[Root] Am
+
+[Intro] 
+Am, G, F, Em
 
 
 [Verse 1]
 
-Am        G                F, Em
+Am        G                F Em
 Whenever I'm alone with you
-Am          G              F, Em
+Am          G              F Em
 You make me feel like I am home again
-Am       G                F, Em
+Am       G                F Em
 Whenever I'm alone with you
-Am          G              F, Em
+Am          G              F Em
 You make me feel like I am whole again
 
-Am       G                F, Em
+Am       G                F Em
 Whenever I'm alone with you
-Am           G              F, Em
+Am           G              F Em
 You make me feel like I am young again
-Am       G                F, Em
+Am       G                F Em
 Whenever I'm alone with you
- Am          G              F, Em
+ Am          G              F Em
 You make me feel like I am fun again
 Am          G              F, Em
 Whenever I'm alone with you
-Am          G              F, Em
+Am          G              F Em
 You make me feel like I am fun again
 
 
@@ -37,18 +40,18 @@ Whatever words I say, I will always love you
 F        G          Am
 I will always love you
 
-Am          G              F, Em
+Am          G              F Em
 
 
 [Verse 2]
 
-Am          G              F, Em
+Am          G              F Em
 Whenever I'm alone with you
-Am          G              F, Em
+Am          G              F Em
 You make me feel like I am free again
 Am          G              F, Em
 Whenever I'm alone with you
-Am          G              F, Em
+Am          G              F Em
 You make me feel like I am clean again
 
 
@@ -63,4 +66,4 @@ Whatever words I say, I will always love you
 F        G          Am
 I will always love you
 
-Am          G              F, Em
+Am          G              F Em

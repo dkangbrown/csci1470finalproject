@@ -1,4 +1,6 @@
-INTRO: G    C  G    C  
+[Root] G
+
+G    C  G    C  
 
 G         C       G
 Love Is A Burning Thing

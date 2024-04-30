@@ -1,3 +1,5 @@
+[Root] G
+
 D      C  G    D C G
 I like to dream
           D       C        G             D C G     
