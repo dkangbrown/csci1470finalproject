@@ -127,6 +127,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+metal/
 
 # Spyder project settings
 .spyderproject
@@ -160,4 +161,7 @@ cython_debug/
 #.idea/
 
 # datafiles
-data/musicoset_songfeatures/*
+/data/musicoset_songfeatures/*
+
+# Ignore checkpoints from tensorflow
+/code/lyrics/checkpoints/
