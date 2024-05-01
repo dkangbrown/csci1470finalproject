@@ -1,3 +1,5 @@
+[Root] A
+
 (Intro) A  B (3x)
 
    A               B  A               B

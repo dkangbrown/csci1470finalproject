@@ -1,3 +1,4 @@
+[Root] D
 
 [Verse]
 D
@@ -5,7 +6,7 @@ I don't need a whole lots of money. I don't need a big fine car.
 D
 I got everything that a man could want. I got more than I could ask for.
 G
-I-i don't have to run around. I don't have to stay out all night, ’cause I got me a  
+I-i don't have to run around. I don't have to stay out all night, 'cause I got me a  
 D                                                                   F# G G# A
 sweet, a sweet lovin' woman and she knows just how to treat me right.
 
@@ -14,7 +15,7 @@ sweet, a sweet lovin' woman and she knows just how to treat me right.
 A                                    G                          B     C   C#   D
 Well my baby, she's alright. Well my baby's clean out of sight. Don't you know that she's 
 D                 G          C C# D                    G         C   C#     D 
-She's some kind of wonderful;        She's some kind of wonderful, yes she is she’suh-
+She's some kind of wonderful;        She's some kind of wonderful, yes she is she'suh-
                   G                C    C#  D
 She's some kind of wonderful yeah,yeah,yeah,yeah
 
@@ -52,7 +53,7 @@ can I get a whitness (yeah)
 
 [Outro]
                                D                        G
-I thought you’re talkin’bout my baby, she’s some kind of wonderful,
+I thought you're talkin'bout my baby, she's some kind of wonderful,
                                 C   C#  D                                                  
 talkin'bout my baby, she's some kind of wonderful, 
                                         G

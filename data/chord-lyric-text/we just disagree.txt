@@ -1,4 +1,4 @@
-[Intro]
+[Root] E
 
 E    A*    A*/ B*  x 8
 

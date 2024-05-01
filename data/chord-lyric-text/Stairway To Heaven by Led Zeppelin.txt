@@ -1,11 +1,13 @@
+[Root] Am
+
 Am E+* C D F G Am
 
           Am         E+ *
-There’s a lady who’s sure
+There's a lady who's sure
          C           D
 All that glitters is gold
           F                    G  Am
-And she’s buying a stairway to heaven.
+And she's buying a stairway to heaven.
          Am             E+ *
 When she gets there she knows
        C              D
@@ -13,10 +15,10 @@ If the stores are all closed
        F                         G    Am
 With a word she can get what she came for.
 C    D    F    Am            C        G              D
-Ooh, ooh, Ooh, ooh and she’s buying a stairway to heaven.
+Ooh, ooh, Ooh, ooh and she's buying a stairway to heaven.
 
           Am          E+ *
-There’s a sign on the wall
+There's a sign on the wall
         C           D
 But she wants to be sure
           F                             G   Am
@@ -24,7 +26,7 @@ cause you know sometimes words have two meanings.
      Am          E+ *
 In a tree by the brook
           C            D
-There’s a songbird who sings,
+There's a songbird who sings,
           F                       G  Am
 Sometimes all of our thoughts are misgiven.
 
@@ -36,7 +38,7 @@ D  Dsus4 D                Am   Em D C D
 Ooh,      and it makes me wonder.
 
           C         G
-There’s a feeling I get
+There's a feeling I get
        Am
 When I look to the west,
        C         G          F   Am
@@ -79,24 +81,24 @@ D        Am   Em D C D
 Oooooooh
 
 C            G              Am
-If there’s a bustle in your hedgerow
+If there's a bustle in your hedgerow
          G
-Don’t be alarmed now,
+Don't be alarmed now,
 C           G                    Am
-It’s just a spring clean for the may queen.
+It's just a spring clean for the may queen.
 C              G                 Am
 Yes, there are two paths you can go by
            G
 But in the long run
 C             G                  Am
-There’s still time to change the road you’re on.
+There's still time to change the road you're on.
 D                Am    Em D C D
 Ooh, it makes me wonder
 
 C            G              Am
-Your head is humming and it won’t go
+Your head is humming and it won't go
         G
-In case you don’t know,
+In case you don't know,
 C          G              Am
 The pipers calling you to join him,
 C          G                Am
@@ -130,7 +132,7 @@ When all are one and one is all
 To be a rock and not to roll.
 
           F        G              Am
-And she’s buying a stairway to heaven.
+And she's buying a stairway to heaven.
 
 * E+ is an E augmented chord...perhaps the easiest way to play it is:
 1st finger, first fret G string

@@ -1,3 +1,5 @@
+[Root] Cm
+
 [Intro/Riff]
 F5 Eb5 C5 F5 Eb5 C5  x6
 

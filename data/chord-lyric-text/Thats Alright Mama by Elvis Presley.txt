@@ -1,3 +1,5 @@
+[Root] A
+
 A
 Well, that's alright, mama
 A
@@ -6,7 +8,7 @@ A                    A7
 That's alright mama, just anyway you do
 A7              D
 Well, that's alright, that's alright.
-D        E[7]                       A
+D        E7                       A
 That's alright now mama, anyway you do
 
 
@@ -20,7 +22,7 @@ A
 She ain't no good for you'
  A7              D                            
 But, that's alright, that's alright.
-D        E[7]                       A
+D        E7                       A
 That's alright now mama, anyway you do
 
 
@@ -34,5 +36,5 @@ Well, then you wont be bothered with
 Me hanging 'round your door
  A7              D    
 Well, that's alright, that's alright.
-D        E[7]                       A
+D        E7                       A
 That's alright now mama, anyway you do

@@ -1,4 +1,4 @@
-[Verse]
+[Root] A
 
 I've been run down,  and I've been lied to,
 

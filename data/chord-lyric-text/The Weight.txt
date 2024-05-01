@@ -1,4 +1,4 @@
-[Verse]
+[Root] A
 
 A               C#m             D                       A
 I pulled in to Nazareth, I was feeling about half past dead.

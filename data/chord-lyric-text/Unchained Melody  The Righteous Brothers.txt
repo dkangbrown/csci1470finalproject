@@ -1,4 +1,4 @@
-[Verse]
+[Root] C
 
 C     Am         F             G             C
 Oh,  my love, my darling, I've hungered for your touch

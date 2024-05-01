@@ -1,4 +1,6 @@
-N/C                         G
+[Root] G
+
+                         G
 Take out the papers and the trash
                              C
 Or you don't get no spendin' cash
@@ -6,7 +8,7 @@ Or you don't get no spendin' cash
 If you don't scrub that kitchen floor
                                  G
 You ain't gonna rock and roll no more
-           N/C
+           
 Yakety yak (don't talk back)
 
                              G

@@ -1,4 +1,4 @@
-[Intro] 
+[Root] Am
 
 1 2 3 4  1 2 3 4  1 2 3 4
 F - E -  F - E -  F - E G

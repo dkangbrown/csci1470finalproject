@@ -1,3 +1,5 @@
+[Root] C
+
     C            C7
 You get up every morning,
            Bb
@@ -34,7 +36,6 @@ Taking care of business, every way
 I've been taking care of business, it's all mine,
 C                            Bb
 taking care of business, and working overtime
-
 Work out!
 
 C Bb F  

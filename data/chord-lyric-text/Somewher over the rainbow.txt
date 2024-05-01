@@ -1,3 +1,5 @@
+[Root] F
+
 Intro: F  Fmaj7  Dm  Bb  F  C  
 Dm  Bb  Bbadd9 Bb
 

@@ -1,4 +1,4 @@
-Capo 4
+[Root] C
 
 [Verse]
 C           Cmaj7       
@@ -58,7 +58,7 @@ Relationships have all been bad
 C            Cmaj7                 G7
 Mine have been like Verlaine's and Rimbaud
 C                  Cmaj7
-But there’s no way I can compare
+But thereï¿½s no way I can compare
 F
 All those scenes to this affair
 C                    G                 C

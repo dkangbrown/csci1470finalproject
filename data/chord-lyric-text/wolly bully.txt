@@ -1,4 +1,4 @@
-Uno, dos, one, two, tres, quatro
+[Root] G
 
 G7
 

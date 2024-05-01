@@ -1,4 +1,6 @@
-{G D C D} x6
+[Root] G
+
+G D C D x6
 
 
 [Verse 1:]

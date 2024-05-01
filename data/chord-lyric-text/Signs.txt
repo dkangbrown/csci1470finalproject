@@ -1,3 +1,4 @@
+[Root] D
 
 [Intro]
 D    Dsus4 D  Dsus2 D  Dsus4 D  G/B

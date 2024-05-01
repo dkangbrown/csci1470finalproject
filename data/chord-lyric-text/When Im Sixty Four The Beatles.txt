@@ -1,3 +1,5 @@
+[Root] C
+
 [Intro]
 |C - |- - |F G |C - |
 |C - |- - |

@@ -1,3 +1,5 @@
+[Root] Bb
+
 [Verse 1]
 Bb
 I know a cat named way out Willie.

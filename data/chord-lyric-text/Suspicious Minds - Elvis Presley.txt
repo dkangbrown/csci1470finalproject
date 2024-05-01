@@ -1,4 +1,4 @@
-[Verse]
+[Root] G
 
 G                        C
   We're caught in a trap;  I can't walk out

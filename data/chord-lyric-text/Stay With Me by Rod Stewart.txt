@@ -1,4 +1,5 @@
-VERSE:
+[Root] A
+
         A        
 In the morning
                B

@@ -1,3 +1,5 @@
+[Root] F
+
 F G Em F  2x
 
 Dm    C     Dm    C        Dm    C

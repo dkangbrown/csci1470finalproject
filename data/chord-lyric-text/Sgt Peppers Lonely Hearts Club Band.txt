@@ -1,4 +1,4 @@
-[Intro]
+[Root] G
 
 A7   A7   C7   G7
 

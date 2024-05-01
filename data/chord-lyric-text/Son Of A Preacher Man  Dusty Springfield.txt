@@ -1,4 +1,4 @@
-[Intro] x2
+[Root] E
 
          E
      v   v   v   v     v   v   v   v

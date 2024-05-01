@@ -1,4 +1,4 @@
-[Intro]
+[Root] A
 
 | E* Emaj7 | E7     | F#m* E* | D* A*  |
 

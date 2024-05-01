@@ -1,3 +1,4 @@
+[Root] D
 
 D D   C C   G G G G  4x
 
@@ -68,7 +69,7 @@ I saw Lon Chaney Jr. walking with the Queen
 D         C             G
 Doing the werewolves of London
   D              C                         G
-I saw a werewolf drinking a piña colada at Trader Vic's
+I saw a werewolf drinking a piï¿½a colada at Trader Vic's
 D   C        G
 His hair was perfect
 

@@ -1,3 +1,5 @@
+[Root] C
+
     C        Em     F        Em
 I see trees of green, red roses too
 Dm7          C    E7         Am

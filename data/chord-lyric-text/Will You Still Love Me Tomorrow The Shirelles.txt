@@ -1,3 +1,5 @@
+[Root] C
+
 C              Am                 Dm      G 
 Tonight you're mine completely 
 C             Am                           G 

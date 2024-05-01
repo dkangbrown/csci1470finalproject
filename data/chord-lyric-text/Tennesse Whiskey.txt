@@ -1,4 +1,4 @@
-Verse 1
+[Root] C
 
 C                  F             C
 I used to spend my nights in a bar room

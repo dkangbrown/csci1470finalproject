@@ -1,4 +1,4 @@
-[Intro]
+[Root] F
 
 N.C.
 Wa bop a lu bop a lom bam boom

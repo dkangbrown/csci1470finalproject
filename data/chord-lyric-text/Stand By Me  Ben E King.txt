@@ -1,4 +1,4 @@
-[Intro]
+[Root] A
 
  A   F#m   D   E   A
 

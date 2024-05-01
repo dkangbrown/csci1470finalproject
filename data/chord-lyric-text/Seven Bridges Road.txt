@@ -1,3 +1,5 @@
+[Root] D
+
 D         C            G        D
 There are stars in the southern sky
           C      G  D

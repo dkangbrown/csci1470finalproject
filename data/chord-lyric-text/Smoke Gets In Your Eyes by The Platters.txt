@@ -1,4 +1,4 @@
-[Verse 1]
+[Root] C
 
 C                Dm7
 They asked how I knew,
@@ -21,13 +21,13 @@ C   Bbdim   Dm7   G+
 [Verse 2]
 
 C                          Dm7
-They said, some day you’ll find
+They said, some day youï¿½ll find
 
 G7                 C      C+  F
 all whose love are blind, oh, oh.
 
 Cdim                 Cmaj7
-When your heart’s on fire,
+When your heartï¿½s on fire,
 
 Am7         Dm7   G7                 C
 You must realize, smoke gets in your eyes.
@@ -65,7 +65,7 @@ Cdim           Cmaj7
 So I smile and say:
 
 Am7                  Dm7
-“When a lovely flame dies,
+ï¿½When a lovely flame dies,
 
 G7                 C
 Smoke gets in your eyes.
@@ -74,7 +74,7 @@ Smoke gets in your eyes.
 [Finale]
 
          F
-…in your eyes
+ï¿½in your eyes
 
 C                  Fmaj C+
 Smoke gets in your eyes

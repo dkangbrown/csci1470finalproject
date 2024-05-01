@@ -1,3 +1,5 @@
+[Root] D
+
 D C Cadd9  G Gm Bb  C F Esus4 E  2x
 
 D                           C      Cadd9

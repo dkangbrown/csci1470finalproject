@@ -1,4 +1,6 @@
 
+[Root] D
+
 [Verse]
 D            A     G Bm A D        A     G  Bm A
 Standing on the corner, suitcase in my hand

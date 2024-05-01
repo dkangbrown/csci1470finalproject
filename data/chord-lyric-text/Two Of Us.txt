@@ -1,4 +1,4 @@
-[Verse]
+[Root] G
 
  G
 Two of us riding nowhere

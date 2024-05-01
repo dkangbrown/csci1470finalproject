@@ -1,4 +1,4 @@
-[Verse]
+[Root] G
 
        G    Em  C  D7         G    Em   C     D7          G  B7  Em
    Somewhere-------beyond the sea   Somewhere waiting for me--------

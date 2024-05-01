@@ -1,4 +1,4 @@
-[Intro]
+[Root] D
 
 D  Am7  A7sus4  C       D  Am7  A7sus4  C         D
 

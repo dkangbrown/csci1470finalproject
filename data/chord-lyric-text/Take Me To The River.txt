@@ -1,4 +1,4 @@
-CHORDS
+[Root] E
     
           [high -to mix it up]                                          [high]
      E7    E7   Asus4   C5    G5    D5    A7  A7sus4  E7+5   B7     C#m

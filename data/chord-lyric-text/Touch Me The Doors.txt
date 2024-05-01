@@ -1,8 +1,8 @@
-[Intro]
+[Root] F#
 
-        4 times: Am Am Am G Am Am G Am Bm
-        2 times: Am7 Am7 Am7 G7 Am7 Am7 G7 Am7 Bm7
-        1 times: Am7 -stop-
+        Am Am Am G Am Am G Am Bm
+        Am7 Am7 Am7 G7 Am7 Am7 G7 Am7 Bm7
+        Am7
 
 
 [Verse]
@@ -36,9 +36,9 @@
 
 [Intro]
 
-        4 times: Am Am Am G Am Am G Am Bm
-        2 times: Am7 Am7 Am7 G7 Am7 Am7 G7 Am7 Bm7
-        1 times: Am7 -stop-
+        Am Am Am G Am Am G Am Bm
+        Am7 Am7 Am7 G7 Am7 Am7 G7 Am7 Bm7
+        Am7
 
 
 [Verse]
@@ -83,4 +83,4 @@
 
 [Ending]
 
-        ? times: Am Am Am G Am Am G Am Bm
+        Am Am Am G Am Am G Am Bm

@@ -1,4 +1,4 @@
-INTRO: E
+[Root] E
 
 #1.
 E                         B                        E

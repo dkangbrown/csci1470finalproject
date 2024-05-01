@@ -1,4 +1,4 @@
-[Verse]
+[Root] A
 
 A                   F                   G
 Hey Man             Leave me a-lone you know

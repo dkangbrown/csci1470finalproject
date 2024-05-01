@@ -1,3 +1,5 @@
+[Root] G
+
 [ Intro ]
 
 | G | 

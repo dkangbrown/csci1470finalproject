@@ -1,4 +1,4 @@
-[Verse]
+[Root] G
  
            D              C         G
 In the town where I was born

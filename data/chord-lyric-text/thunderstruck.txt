@@ -1,4 +1,4 @@
-[Intro]
+[Root] B5
 
 N.C.
 A-ha,ha,ha.    A-ha,ha,ha.    A-ha,ha,ha.

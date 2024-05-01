@@ -1,3 +1,5 @@
+[Root] C
+
 [Intro:]
 G7 C
 

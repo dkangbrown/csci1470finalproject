@@ -1,4 +1,4 @@
-[Chorus]
+[Root] D
 
 D 
 That'll be the day when you say good-bye

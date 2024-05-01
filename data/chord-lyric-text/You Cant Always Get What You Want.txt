@@ -1,3 +1,5 @@
+[Root] G
+
 [Verse]
 
     G   Gadd9 G               C
