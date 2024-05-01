@@ -64,8 +64,8 @@ def main():
     lg.train(X_train, y_train, X_test, y_test, BATCH_SIZE)
 
     # Save the final trained model
-    lg.model.save('final_lyrics_model.h5')
-    logging.info("Model saved successfully.")
+    # lg.model.save('final_lyrics_model.h5')
+    # logging.info("Model saved successfully.")
 
     # Generate sample text to check the model's performance
     seed_text = ['hello', 'from', 'the', 'other', 'side']
