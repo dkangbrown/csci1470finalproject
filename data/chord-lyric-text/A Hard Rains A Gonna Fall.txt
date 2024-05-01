@@ -17,7 +17,7 @@ I've been out in front of a dozen dead oceans
 I've been ten thousand miles in the mouth of a graveyard
            D                A            D                G
 And it's a hard, and it�s a hard, it�s a hard, and it�s a hard
-       D        A             [ D ]
+       D        A             D
 It's a hard rai---n's a-gonna fall
 
 
@@ -42,7 +42,7 @@ I saw ten thousand talkers whose tongues were all broken
 I saw guns and sharp swords in the hands of young children
            D                A            D                G
 And it's a hard, and it's a hard, it's a hard, and it's a hard
-           D        A             [ D ]
+           D        A             D
 And it's a hard rai---n's a-gonna fall
 
 
@@ -67,7 +67,7 @@ I heard the song of a poet who died in the gutter
 I heard the sound of a clown who cried in the alley
            D            A            D            G
 And it's a hard, it's a hard, it's a hard, it's a hard
-       D        A             [ D ]
+       D        A             D
 It's a hard rai---n's a-gonna fall
 
 
@@ -90,7 +90,7 @@ I met one man who was wounded in love
 I met another man who was wounded in hatred
            D            A            D            G
 And it's a hard, it's a hard, it's a hard, it's a hard
-       D        A             [ D ]
+       D        A             D
 It's a hard rai---n's a-gonna fall
 
 
@@ -125,5 +125,5 @@ Then I'll stand on the ocean until I start sinkin'
 But I'll know my song well before I start singin'
            D            A            D                G
 And it's a hard, it's a hard, it's a hard, and it's a hard
-           D        A             [ D ]
+           D        A             D
 It's a hard rai---n's a-gonna fall

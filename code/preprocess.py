@@ -6,7 +6,7 @@ def preprocess_song(file_path):
         lines = file.readlines()
 
     # Regular expressions to identify chords and tabs
-    chord_regex = re.compile(r"^[A-G][#b]?m?(7|5|M|maj7|maj|M7|min7|m7|min|dim|dim7|aug|\+|sus2|sus4|7sus2|7sus4)?(add)?[0-9]*/?[A-G]?$")
+    chord_regex = re.compile(r"^[A-G][#b]?(7|5|M|maj7|maj|M7|mmaj7|min7|m7|m|min|dim|dim7|aug|\+|sus2|sus4|7sus2|7sus4)?(add)?[0-9]*/?[A-G]?[#b]?$")
     section_regex = re.compile(r"^(\(|\[)?[\#]?(chorus|Chorus|CHORUS|verse|Verse|VERSE|intro|Intro|INTRO|outro|Outro|OUTRO|bridge|Bridge|BRIDGE|interlude|Interlude|INTERLUDE|instrumental|Instrumental|INSTRUMENTAL|solo|Solo|SOLO)*( )?[0-9]*(\:|\.)?(\]|\))?$")
     accidental_regex = re.compile(r"^\w[#b]")
 
@@ -43,16 +43,20 @@ def preprocess_song(file_path):
         'M7': 1,
         '7': 2,
         'm': 3,
+        'mmaj7': 3,
         'min7': 4,
         'm7': 4,
         'dim': 5,
         'dim7':5,
         '+': 6,
+        '+5': 6,
         'aug': 6,
         'sus2': 7,
-        'sus4': 8,
         '7sus2': 7,
-        '7sus4': 8
+        '2': 7,
+        'sus4': 8,
+        '7sus4': 8,
+        '4': 8
     }
 
     def get_root_pitch(chord):
@@ -126,7 +130,7 @@ def preprocess_song(file_path):
         return chord_list
 
     for line in lines:
-        line = line.strip().replace('|',' ').replace('(',' ').replace(')',' ').replace('-',' ').replace('%',' ').replace('\t',' ').replace('\\','/').replace('/ ',' ').replace('*',' ').replace('@',' ').replace('x2',' ').replace('x3',' ').replace('x4',' ').replace('x5',' ').replace('x6',' ').replace('x7',' ').replace('x8',' ')
+        line = line.strip().replace('|',' ').replace('(',' ').replace(')',' ').replace('-',' ').replace('%',' ').replace('\t',' ').replace('\\','/').replace('/ ',' ').replace('*',' ').replace('@',' ').replace(',  ','   ').replace('x2',' ').replace('x3',' ').replace('x4',' ').replace('x5',' ').replace('x6',' ').replace('x7',' ').replace('x8',' ')
         # print(f"line: {line}")
         if section_regex.match(line):
             # print(f"section regex match; isbreak = {isbreak}")
@@ -159,7 +163,7 @@ filelist = os.listdir(Path)
 preprocessed_pairs = []
 file_name = re.compile(r"^([A-R]|[a-r])")
 for i in filelist:
-    if i.endswith(".txt") and file_name.match(i):
+    if i.endswith(".txt"):
         print(i)
         song_data = preprocess_song(Path + i)
         print(song_data)

@@ -9,7 +9,6 @@ import argparse
 import re
 
 # Data Handling
-import panda as pd
 import numpy as np
 
 # Network and HTTP
