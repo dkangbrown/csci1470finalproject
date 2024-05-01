@@ -43,14 +43,14 @@ df.head()
 
 """## Read poetry"""
 
-pdf = pd.read_csv('../data/poetry-foundations/PoetryFoundationData.csv',quotechar='"')
+pdf = pd.read_csv('../data/poetry-foundation/PoetryFoundationData.csv',quotechar='"')
 pdf.head()
 
 pdf['single_text'] = pdf['Poem'].apply(lambda x: ' \n '.join([l.lower().strip().translate(translator) for l in x.splitlines() if len(l)>0]))
 pdf.head()
 
 sum_df = pd.DataFrame( df.iloc[:1000]['single_text'] )
-sum_df = sum_df._append(pd.DataFrame( pdf.iloc[:1000]['single_text'] ), ignore_index=True)
+sum_df = sum_df.append(pd.DataFrame( pdf.iloc[:1000]['single_text'] ), ignore_index=True)
 #sum_df  = pd.DataFrame( pdf['single_text'] )
 sum_df.dropna(inplace=True)
 
@@ -132,7 +132,7 @@ def sample(preds, temperature=1.0):
 
 def on_epoch_end(epoch, logs):
     # Function invoked at end of each epoch. Prints generated text.
-    _examples_file.write('\n----- Generating text after Epoch: %d\n' % epoch)
+    examples_file.write('\n----- Generating text after Epoch: %d\n' % epoch)
 
     # Randomly pick a seed sequence
     seed_index = np.random.randint(len(X_train+X_test))
@@ -180,3 +180,4 @@ model.fit(generator(X_train, y_train, BATCH_SIZE),
                     callbacks=callbacks_list,
                     validation_data=generator(X_test, y_train, BATCH_SIZE),
                     validation_steps=int(len(y_train)/BATCH_SIZE) + 1)
+

@@ -43,9 +43,6 @@ download_data () {
     fi
 }
 
-# Add a loop to ask if you want to download the data for each of the URLs from list
-
-
 # download_data "https://guitaralliance.com/chord-lyric-text.zip" "chord-lyric-text" "chord-lyric-text.zip"
 # download_data "git@github.com:00sapo/OpenEWLD.git" "OpenEWLD" "OpenEWLD"
 # download_data "http://labrosa.ee.columbia.edu/~dpwe/tmp/millionsongsubset.tar.gz" "millionsongsubset" "millionsongsubset.tar.gz"
