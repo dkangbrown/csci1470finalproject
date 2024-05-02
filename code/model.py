@@ -1,6 +1,7 @@
 import utils
 import numpy as np
 import tensorflow as tf
+from build import ChordLyricProcessor
 
 # architecture: transformer that takes in text and outputs chords
 # train on lyrics + chords dataset
@@ -327,9 +328,15 @@ optimizer = tf.keras.optimizers.Adam(learning_rate, beta_1=0.9, beta_2=0.98,
 #                 validation_data=val_batches)
 #
 
-# Define vocabulary sizes based on your tokenizer outputs
-input_vocab_size = tokenizers.lyrics.get_vocab_size().numpy()
-target_vocab_size = tokenizers.chords.get_vocab_size().numpy()
+# Initialize the preprocessor
+preprocessor = ChordLyricProcessor()
+
+# Get the dataset using the preprocessor
+dataset = preprocessor.get_dataset()
+
+# Define vocabulary sizes based on your preprocessor's tokenizers
+input_vocab_size = preprocessor.lyric_tokenizer.vocabulary_size()
+target_vocab_size = 12  # Update with your target vocabulary size
 
 # Create the transformer with adapted vocabulary sizes
 transformer = Transformer(
@@ -341,12 +348,16 @@ transformer = Transformer(
     target_vocab_size=target_vocab_size,
     dropout_rate=dropout_rate)
 
-# Ensure that input data (lyrics and chords) is correctly processed and tokenized
+# Define optimizer and learning rate scheduler
+learning_rate = CustomSchedule(d_model)
+optimizer = tf.keras.optimizers.Adam(learning_rate, beta_1=0.9, beta_2=0.98, epsilon=1e-9)
+
+# Compile the model
 transformer.compile(
     loss=masked_loss,
     optimizer=optimizer,
     metrics=[masked_accuracy])
 
 # Train the model
-transformer.fit(train_batches, epochs=20, validation_data=val_batches)
+transformer.fit(dataset, epochs=20)
 
