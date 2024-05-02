@@ -1,8 +1,9 @@
 from utils import argparse, sys
 from tensorflow.keras.models import load_model as keras_load_model
+from lyrics.model import LyricsGenerator
 
 # Default paths to models
-LYRICS_MODEL_PATH = "path_to_save_final_lyrics_model.h5"
+LYRICS_MODEL_PATH = "lyrics/lyrics_generator.h5"
 CHORDS_MODEL_PATH = "path_to_chords_model"
 
 
@@ -13,8 +14,8 @@ def load_model(model_path):
 
 def generate_lyrics(model, seed):
     print(f"Generating lyrics using model at {model} with seed: '{seed}'")
-    generated_lyrics = model.generate_text(seed.split(), num_words=50)
-    return generated_lyrics
+    lyrics_generator = LyricsGenerator(seed, model)
+    return lyrics_generator.generate_text(seed)
 
 
 def generate_chords(model, lyrics):

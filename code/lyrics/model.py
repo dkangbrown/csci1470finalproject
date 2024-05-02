@@ -65,21 +65,31 @@ class LyricsGenerator:
 
 
     def generate_text(self, seed_sentence, num_words=50):
+        sentence = seed_sentence.split()  # This splits the seed into words, ensuring 'sentence' is a list
         generated_text = []
-        sentence = seed_sentence
+
         for _ in range(num_words):
-            x_pred = np.zeros((1, len(seed_sentence)))
+            x_pred = np.zeros((1, len(sentence)))  # Create input tensor for prediction
             for t, word in enumerate(sentence):
-                x_pred[0, t] = self.word_indices.get(word, 0)  # Use 0 if word not found
+                x_pred[0, t] = self.word_indices.get(word, 0)  # Convert words to indices
 
             preds = self.model.predict(x_pred, verbose=0)[0]
             next_index = sample(preds)
-            next_word = self.indices_word[next_index]
-
-            sentence = sentence[1:] + [next_word]
-            generated_text.append(next_word)
+            
+            if next_index in self.indices_word:
+                next_word = self.indices_word[next_index]  # Get next word from dictionary
+                sentence.append(next_word)  # Append next word as string
+                generated_text.append(next_word)
+                sentence = sentence[1:]  # Move window forward
+            else:
+                print(f"Sampled index {next_index} not in dictionary, using fallback word.")
+                next_word = self.indices_word[0]  # Use a fallback word if index not found
+                sentence.append(next_word)  # Append fallback word
+                generated_text.append(next_word)
+                sentence = sentence[1:]  # Move window forward
 
         return ' '.join(generated_text)
+
 
     def on_epoch_end(self, epoch, logs):
         # Custom function to be filled based on specific use-case for generating text during training
@@ -87,3 +97,5 @@ class LyricsGenerator:
         seed_text = ['hello', 'from', 'the', 'other', 'side']
         sample_text = self.generate_text(seed_text, num_words=50)
         print("Generated text: ", sample_text)
+
+
