@@ -300,28 +300,53 @@ learning_rate = CustomSchedule(d_model)
 optimizer = tf.keras.optimizers.Adam(learning_rate, beta_1=0.9, beta_2=0.98,
                                      epsilon=1e-9)
 
+# transformer = Transformer(
+#     num_layers=num_layers,
+#     d_model=d_model,
+#     num_heads=num_heads,
+#     dff=dff,
+#     input_vocab_size=tokenizers.pt.get_vocab_size().numpy(),
+#     target_vocab_size=tokenizers.en.get_vocab_size().numpy(),
+#     dropout_rate=dropout_rate)
+#
+# output = transformer((pt, en))
+#
+# print(en.shape)
+# print(pt.shape)
+# print(output.shape)
+#
+# transformer.summary()
+#
+# transformer.compile(
+#     loss=masked_loss,
+#     optimizer=optimizer,
+#     metrics=[masked_accuracy])
+#
+# transformer.fit(train_batches,
+#                 epochs=20,
+#                 validation_data=val_batches)
+#
+
+# Define vocabulary sizes based on your tokenizer outputs
+input_vocab_size = tokenizers.lyrics.get_vocab_size().numpy()
+target_vocab_size = tokenizers.chords.get_vocab_size().numpy()
+
+# Create the transformer with adapted vocabulary sizes
 transformer = Transformer(
     num_layers=num_layers,
     d_model=d_model,
     num_heads=num_heads,
     dff=dff,
-    input_vocab_size=tokenizers.pt.get_vocab_size().numpy(),
-    target_vocab_size=tokenizers.en.get_vocab_size().numpy(),
+    input_vocab_size=input_vocab_size,
+    target_vocab_size=target_vocab_size,
     dropout_rate=dropout_rate)
 
-output = transformer((pt, en))
-
-print(en.shape)
-print(pt.shape)
-print(output.shape)
-
-transformer.summary()
-
+# Ensure that input data (lyrics and chords) is correctly processed and tokenized
 transformer.compile(
     loss=masked_loss,
     optimizer=optimizer,
     metrics=[masked_accuracy])
 
-transformer.fit(train_batches,
-                epochs=20,
-                validation_data=val_batches)
+# Train the model
+transformer.fit(train_batches, epochs=20, validation_data=val_batches)
+

@@ -1,5 +1,7 @@
-from utils import re
 import os
+from utils import re
+import tensorflow as tf
+from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
 
 def preprocess_song(file_path):
     with open(file_path, 'r') as file:
@@ -71,7 +73,7 @@ def preprocess_song(file_path):
 
     verses = []
     key = lines[0].strip().split(' ')[1]
-    print(f"key: {key}")
+    # print(f"key: {key}")
     key_pitch = get_root_pitch(key)
     lines = lines[1:]
     versenum = -1
@@ -125,7 +127,7 @@ def preprocess_song(file_path):
         line = line.strip()
         chord_list = line.split(" ")
         chord_list = [x for x in chord_list if x]
-        print(f"chord list: {chord_list}")
+        # print(f"chord list: {chord_list}")
         chord_list = [chord_to_vector(x) for x in chord_list]
         return chord_list
 
@@ -158,14 +160,15 @@ def preprocess_song(file_path):
     # chords are in the format [0-11 (root pitch), 0-11 (base pitch), 0-7 (quality)]
     return [x for x in verses if x['chords']]
 
-Path = "data/chord-lyric-text/"
+Path = "../data/chord-lyric-text/"
 filelist = os.listdir(Path)
 preprocessed_pairs = []
 file_name = re.compile(r"^([A-R]|[a-r])")
 for i in filelist:
     if i.endswith(".txt"):
-        print(i)
+        # print(i)
         song_data = preprocess_song(Path + i)
-        print(song_data)
+        # print(song_data)
         preprocessed_pairs += song_data
-# print(preprocessed_pairs)
+print(preprocessed_pairs[0])
+
