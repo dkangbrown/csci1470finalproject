@@ -40,7 +40,7 @@ def export_music(score, chord_list, gap_list, filename):
 
 if __name__ == '__main__':
     model = build_model(weights_path='weights.keras')
-    filenames = get_filenames(input_dir=INPUTS_PATH)
+    filenames = get_filenames(extensions=INPUTS_PATH)
     data_corpus = convert_files(filenames, fromDataset=False)
 
     for idx in trange(len(data_corpus)):
