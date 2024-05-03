@@ -15,7 +15,7 @@ def load_model(model_path):
 def generate_lyrics(model, seed):
     print(f"Generating lyrics using model at {model} with seed: '{seed}'")
     lyrics_generator = LyricsGenerator(seed, model)
-    return lyrics_generator.generate_text(seed)
+    return lyrics_generator.generate_text(seed, diversity=0.5)
 
 
 def generate_chords(model, lyrics):

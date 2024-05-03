@@ -6,3 +6,5 @@ ipython
 scipy
 tqdm
 matplotlib
+music21
+keras_metrics

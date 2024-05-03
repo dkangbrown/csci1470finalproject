@@ -64,7 +64,7 @@ class LyricsGenerator:
         logging.info("Model saved successfully.")
 
 
-    def generate_text(self, seed_sentence, num_words=50):
+    def generate_text(self, seed_sentence, diversity=1.0,num_words=50):
         sentence = seed_sentence.split()  # This splits the seed into words, ensuring 'sentence' is a list
         generated_text = []
 
@@ -74,7 +74,7 @@ class LyricsGenerator:
                 x_pred[0, t] = self.word_indices.get(word, 0)  # Convert words to indices
 
             preds = self.model.predict(x_pred, verbose=0)[0]
-            next_index = sample(preds)
+            next_index = sample(preds, diversity)
             
             if next_index in self.indices_word:
                 next_word = self.indices_word[next_index]  # Get next word from dictionary
