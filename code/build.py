@@ -260,15 +260,15 @@ embed_size = 64
 hidden_size = 72
 
 # Encoder
-inputs = tf.keras.Input(shape=(32,))
+inputs = tf.keras.Input(shape=(None,))
 input_embedding = tf.keras.layers.Embedding(input_vocab_size, embed_size)(inputs)
-encoder_output = tf.keras.layers.GRU(hidden_size)(input_embedding)
+encoder_output, state = tf.keras.layers.GRU(hidden_size, return_state=True)(input_embedding)
 
 # Decoder
-targets = tf.keras.Input(shape=(32,))
+targets = tf.keras.Input(shape=(None,))
 target_embedding = tf.keras.layers.Embedding(target_vocab_size, embed_size)(targets)
-decoder_output = tf.keras.layers.GRU(hidden_size)(target_embedding, initial_state = encoder_output)
-classifier_output = tf.keras.layers.Dense(target_vocab_size)(decoder_output)
+decoder_output = tf.keras.layers.GRU(hidden_size, return_sequences=True)(target_embedding, initial_state = encoder_output)
+classifier_output = tf.keras.layers.Dense(target_vocab_size, activation='softmax')(decoder_output)
 
 model = tf.keras.Model(inputs=[inputs, targets], outputs=classifier_output)
 
@@ -280,8 +280,9 @@ loss=tf.keras.losses.SparseCategoricalCrossentropy()
 metrics=[perplexity]
 
 model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
-model.fit(x=[input_data, target_inputs], y=[target_labels], epochs=5, batch_size=32)
-## ALSO NEED SOME TESTING DATA (maybe fix in preprocessing later lol) 
+model.summary()
+model.fit(x=[input_data, target_inputs], y=[target_labels], epochs=5, batch_size=32, validation_split=0.2)
+
 
 
 
