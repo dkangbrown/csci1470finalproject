@@ -5,6 +5,7 @@ from lyrics.model import LyricsGenerator
 # Default paths to models
 LYRICS_MODEL_PATH = "lyrics/lyrics_generator.h5"
 CHORDS_MODEL_PATH = "path_to_chords_model"
+SENTIMENT_MODEL_PATH = "sentiment/sentiment.keras"
 
 
 def load_model(model_path):

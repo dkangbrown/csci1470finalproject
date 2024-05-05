@@ -42,7 +42,6 @@ df = df.join( df.apply(split_text, axis=1))
 df.head()
 
 """## Read poetry"""
-
 pdf = pd.read_csv('../data/poetry-foundation/PoetryFoundationData.csv',quotechar='"')
 pdf.head()
 
