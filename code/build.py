@@ -7,6 +7,7 @@ import os
 from utils import re
 import tensorflow as tf
 from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
+import string
 
 def preprocess_song(file_path):
     with open(file_path, 'r') as file:
@@ -175,30 +176,20 @@ for i in filelist:
         song_data = preprocess_song(Path + i)
         # print(song_data)
         preprocessed_pairs += song_data
-print(preprocessed_pairs[0])
+print(preprocessed_pairs[0:5])
 
-# Load tokenizer and base model
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-bert_model = TFBertModel.from_pretrained('bert-base-uncased')
+# def prepare_data(texts, chord_vectors):
+#     """ Prepare data for model input from texts and chord vectors. """
+#     input_ids, attention_masks, targets = [], [], []
 
-# Encoder: leveraging the pre-trained BERT
-input_ids = Input(shape=(None,), dtype=tf.int32, name="input_ids")
-attention_mask = Input(shape=(None,), dtype=tf.int32, name="attention_mask")
+#     for text, chords in zip(texts, chord_vectors):
+#         inputs = tokenizer(text, return_tensors="tf", padding=True, truncation=True, max_length=512)
+#         input_ids.append(inputs['input_ids'])
+#         attention_masks.append(inputs['attention_mask'])
+#         encoded_chords = encode_chords(chords)
+#         targets.append(tf.convert_to_tensor(encoded_chords, dtype=tf.int32))
 
-encoder_outputs = bert_model(input_ids, attention_mask=attention_mask)[0]
-
-# Decoder: custom dense layers to predict chords
-x = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(768, return_sequences=True))(encoder_outputs)
-x = Dropout(0.4)(x)
-x = Dense(768, activation='relu')(x)
-outputs = Dense(12 * 12 * 8, activation='softmax')(x)  # 12 root pitches, 12 base pitches, 8 qualities
-
-# Combine into a single model
-model = Model(inputs=[input_ids, attention_mask], outputs=[outputs])
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-
-# Model summary
-model.summary()
+#     return tf.concat(input_ids, axis=0), tf.concat(attention_masks, axis=0), tf.concat(targets, axis=0)
 
 def encode_chord(root_pitch, base_pitch, quality):
     """ Encode chord components into a single integer. """
@@ -223,26 +214,107 @@ print("Decoded Chord:", decoded_chord)
 
 def encode_chords(chords):
     """ Convert a list of chord vectors to encoded values. """
-    return [encode_chord(chord[0], chord[1], chord[2]) for chord in chords]
+    return [str(encode_chord(chord[0], chord[1], chord[2])) for chord in chords]
 
-def prepare_data(texts, chord_vectors):
+def prepare_data(preprocessed_pairs):
     """ Prepare data for model input from texts and chord vectors. """
-    input_ids, attention_masks, targets = [], [], []
+    inputs, targets = [], []
 
-    for text, chords in zip(texts, chord_vectors):
-        inputs = tokenizer(text, return_tensors="tf", padding=True, truncation=True, max_length=512)
-        input_ids.append(inputs['input_ids'])
-        attention_masks.append(inputs['attention_mask'])
-        encoded_chords = encode_chords(chords)
-        targets.append(tf.convert_to_tensor(encoded_chords, dtype=tf.int32))
+    for pair in preprocessed_pairs:
+        # print(pair)
+        split_input = pair.get("text").translate(str.maketrans('', '', string.punctuation)).lower().split()
+        split_input.append("<STOP>")
+        inputs.append(split_input)
+        split_targets = encode_chords(pair.get("chords"))
+        split_targets.append("<STOP>")
+        targets.append(split_targets)
+    
+    # print(inputs, targets)
+    unique_input_words = sorted(set([i for j in inputs for i in j]))
+    input_vocab = {w:i for i, w in enumerate(unique_input_words)}
+    # print(input_vocab)
 
-    return tf.concat(input_ids, axis=0), tf.concat(attention_masks, axis=0), tf.concat(targets, axis=0)
+    input_data = [list(map(lambda x: input_vocab.get(x), i)) for i in inputs]
 
-# Assuming texts and chord_vectors are already defined
-texts = ["your lyrics here"]
-chord_vectors = [[[5, 7, 2]]]  # List of lists of chord vectors
-input_ids, attention_masks, targets = prepare_data(texts, chord_vectors)
+    input_vocab_size = len(unique_input_words)
 
-# Fit model
-model.fit([input_ids, attention_masks], targets, epochs=5, batch_size=32)
+    unique_target_words = sorted(set([i for j in targets for i in j]))
+    target_vocab = {w:i for i, w in enumerate(unique_target_words)}
+    # print(target_vocab)
 
+    target_data = [list(map(lambda x: target_vocab.get(x), i)) for i in targets]
+
+    target_vocab_size = len(unique_target_words)
+
+    return input_data, target_data, input_vocab_size, target_vocab_size
+
+print(prepare_data(preprocessed_pairs[0:5]))
+
+input_data, target_data, input_vocab_size, target_vocab_size = prepare_data(preprocessed_pairs)
+
+target_inputs = [i[:-1] for i in target_data]
+target_labels = [i[1:] for i in target_data]
+
+### MODEL ###
+embed_size = 64
+hidden_size = 72
+
+# Encoder
+inputs = tf.keras.Input(shape=(32,))
+input_embedding = tf.keras.layers.Embedding(input_vocab_size, embed_size)(inputs)
+encoder_output = tf.keras.layers.GRU(hidden_size)(input_embedding)
+
+# Decoder
+targets = tf.keras.Input(shape=(32,))
+target_embedding = tf.keras.layers.Embedding(target_vocab_size, embed_size)(targets)
+decoder_output = tf.keras.layers.GRU(hidden_size)(target_embedding, initial_state = encoder_output)
+classifier_output = tf.keras.layers.Dense(target_vocab_size)(decoder_output)
+
+model = tf.keras.Model(inputs=[inputs, targets], outputs=classifier_output)
+
+def perplexity(logits, labels):
+    return tf.exp(tf.reduce_mean(tf.keras.metrics.sparse_categorical_crossentropy(logits, labels), axis=-1))
+
+optimizer=tf.keras.optimizers.Adam()
+loss=tf.keras.losses.SparseCategoricalCrossentropy()
+metrics=[perplexity]
+
+model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
+model.fit(x=[input_data, target_inputs], y=[target_labels], epochs=5, batch_size=32)
+## ALSO NEED SOME TESTING DATA (maybe fix in preprocessing later lol) 
+
+
+
+# # Assuming texts and chord_vectors are already defined
+# texts = ["your lyrics here"]
+# chord_vectors = [[[5, 7, 2]]]  # List of lists of chord vectors
+# input_ids, attention_masks, targets = prepare_data(texts, chord_vectors)
+# print(input_ids)
+# print(targets)
+
+# # # Load tokenizer and base model
+# # tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+# # bert_model = TFBertModel.from_pretrained('bert-base-uncased')
+
+# # # Encoder: leveraging the pre-trained BERT
+# # input_ids = Input(shape=(None,), dtype=tf.int32, name="input_ids")
+# # attention_mask = Input(shape=(None,), dtype=tf.int32, name="attention_mask")
+
+# # encoder_outputs = bert_model(input_ids, attention_mask=attention_mask)[0]
+
+# # # Decoder: custom dense layers to predict chords
+# # x = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(768, return_sequences=True))(encoder_outputs)
+# # x = Dropout(0.4)(x)
+# # x = Dense(768, activation='relu')(x)
+# # outputs = Dense(12 * 12 * 8, activation='softmax')(x)  # 12 root pitches, 12 base pitches, 8 qualities
+
+# # # Combine into a single model
+# # model = Model(inputs=[input_ids, attention_mask], outputs=[outputs])
+# # model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+# # # Model summary
+# # model.summary()
+
+
+# # # Fit model
+# # model.fit([input_ids, attention_masks], targets, epochs=5, batch_size=32)
