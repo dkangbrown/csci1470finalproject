@@ -153,6 +153,7 @@ class SentimentAnalyzer():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train or load a sentiment analysis model.")
     parser.add_argument("--retrain", action="store_true", help="Retrain the model.")
+    parser.add_argument("--text", type=str, help="Text to predict sentiment for.")
     args = parser.parse_args()
 
     sa = SentimentAnalyzer(retrain=args.retrain)
@@ -163,5 +164,7 @@ if __name__ == "__main__":
             data = json.load(f)
             sa.tokenizer = tokenizer_from_json(data)
 
-    # Example of making a prediction
-    print(sa.predict_sentiment("She didn't come today because she lost her dog yesterday!"))
+    if args.text:
+        print(sa.predict_single_sentiment(args.text))
+    else:
+        print(sa.predict_sentiment("She didn't come today because she lost her dog yesterday!"))
