@@ -7,5 +7,5 @@ EPOCHS = 10
 
 TRANSLATOR = str.maketrans('', '', string.punctuation)
 
-# MODEL_PATH = 'lyrics.keras'
+MODEL_PATH = 'lyrics.keras'
 # MODEL_PATH = 'lyrics_generator.h5'

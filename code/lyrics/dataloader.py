@@ -3,19 +3,22 @@ import numpy as np
 import string
 from sklearn.model_selection import train_test_split
 from config import *
+from better_profanity import profanity
 
 
 def load_data():
+    print('Loading data...')
     df = pd.read_csv("../../data/musicoset_songfeatures/musicoset_songfeatures/lyrics.csv", sep="\t")
     df['lyrics'] = df.apply(lambda x: np.nan if len(str(x['lyrics'])) < 10 else str(x['lyrics'])[2:-2], axis=1)
     df = df.dropna()
 
     pdf = pd.read_csv('../../data/poetry-foundations/PoetryFoundationData.csv', quotechar='"')
+    pdf['Poem'] = pdf['Poem'].apply(lambda poem: profanity.censor(poem))
     pdf['single_text'] = pdf['Poem'].apply(lambda x: ' \n '.join([l.lower().strip().translate(TRANSLATOR) for l in x.splitlines() if len(l)>0]))
 
     df = df.join(df.apply(split_text, axis=1))
     sum_df = pd.DataFrame(df.iloc[:1000]['single_text'])
-    sum_df = sum_df._append(pd.DataFrame(pdf.iloc[:1000]['single_text']), ignore_index=True)
+    sum_df = sum_df.append(pd.DataFrame(pdf.iloc[:1000]['single_text']), ignore_index=True)
     sum_df.dropna(inplace=True)
 
     return sum_df
@@ -23,6 +26,7 @@ def load_data():
 
 def split_text(x):
     text = x['lyrics']
+    text = profanity.censor(text)
     sections = text.split('\\n\\n')
     keys = {'Verse 1': np.nan, 'Verse 2': np.nan, 'Verse 3': np.nan, 'Verse 4': np.nan, 'Chorus': np.nan}
     single_text = []
@@ -37,6 +41,7 @@ def split_text(x):
 
 
 def prepare_data(data):
+    print('Preparing data...')
     # Flatten all text into a single list of words
     text_as_list = [word for text in data['single_text'] for word in text.split()]
     

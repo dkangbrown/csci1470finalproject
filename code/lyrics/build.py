@@ -1,23 +1,22 @@
 import argparse
 from model import LyricsGenerator
 
+def main():
+    parser = argparse.ArgumentParser(description="Generate text with a LyricsGenerator model.")
+    parser.add_argument('--retrain', action='store_true', help='Retrain the model instead of using the saved one.')
+    parser.add_argument('--text', type=str, default="Never gonna give you up", help='Seed text to start generating from.')
+    args = parser.parse_args()
 
-def main(retrain):
-    generator = LyricsGenerator(retrain=retrain)
-
-    if not args.text:
-        seed_text = "Never gonna give you up"
-    else:
-        seed_text = args.text
+    # Initialize the LyricsGenerator with the retrain flag
+    generator = LyricsGenerator(retrain=args.retrain)
 
     # Generate different diversity levels
     for diversity in [0.2, 0.5, 1.0]:
-        print(f"Generated text with diversity {diversity}:", generator.generate_text(seed_text, diversity=diversity))
-
+        print(f"----- Diversity: {diversity} -----")
+        generated_text = generator.generate_text(args.text, diversity=diversity, num_words=50)
+        for line in generated_text:
+            print(line)
+        print('='*80)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Manage Lyrics Generator training and prediction.")
-    parser.add_argument("--retrain", action="store_true", help="Set this flag to retrain the model.")
-    parser.add_argument("--text", type=str, help="Seed text to generate lyrics.")
-    args = parser.parse_args()
-    main(args.retrain)
+    main()
