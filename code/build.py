@@ -210,7 +210,7 @@ def decode_chord(encoded_chord):
 root_pitch = 5  # D
 base_pitch = 7  # F
 quality = 2     # '7' in your qual_to_num dictionary
-encoded_chord = encode_chord(root_pitch, base_pitch, quality)
+encoded_chord = encode_chord([root_pitch, quality])
 decoded_chord = decode_chord(encoded_chord)
 
 print("Encoded Chord:", encoded_chord)
@@ -244,7 +244,6 @@ def prepare_data(preprocessed_pairs):
     # print(inputs, targets)
     unique_input_words = sorted(set([i for j in inputs for i in j]))
     input_vocab = {w:i for i, w in enumerate(unique_input_words)}
-    print(input_vocab)
 
     input_data = [list(map(lambda x: input_vocab.get(x), i)) for i in inputs]
 
@@ -266,6 +265,7 @@ def prepare_data(preprocessed_pairs):
 print(prepare_data(preprocessed_pairs[0:5]))
 
 input_data, target_data, input_vocab_size, target_vocab_size = prepare_data(preprocessed_pairs)
+print(target_data)
 
 target_inputs = [i[:-1] for i in target_data]
 target_labels = [i[1:] for i in target_data]
@@ -288,15 +288,15 @@ classifier_output = tf.keras.layers.Dense(target_vocab_size, activation='softmax
 model = tf.keras.Model(inputs=[inputs, targets], outputs=classifier_output)
 
 def perplexity(logits, labels):
-    return tf.exp(tf.reduce_mean(tf.keras.metrics.sparse_categorical_crossentropy(labels, logits), axis=-1))
+    return tf.exp(tf.reduce_mean(p(labels, logits), axis=-1))
 
 optimizer=tf.keras.optimizers.Adam()
 loss=tf.keras.losses.SparseCategoricalCrossentropy()
 metrics=[perplexity]
 
 model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
-model.summary()
-model.fit(x=[input_data, target_inputs], y=[target_labels], epochs=5, batch_size=32, validation_split=0.2)
+# model.summary()
+# model.fit(x=[input_data, target_inputs], y=[target_labels], epochs=5, batch_size=32, validation_split=0.2)
 
 
 
