@@ -11,6 +11,7 @@ from keras.utils import to_categorical
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import Callback, EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 import argparse
+import matplotlib.pyplot as plt
 import json
 
 
@@ -168,3 +169,25 @@ if __name__ == "__main__":
         print(sa.predict_single_sentiment(args.text))
     else:
         print(sa.predict_sentiment("She didn't come today because she lost her dog yesterday!"))
+
+
+def plot_sentiment_histogram(sentiment_distribution):
+    labels = sentiment_distribution.keys()
+    probabilities = sentiment_distribution.values()
+    
+    plt.bar(labels, probabilities)
+    plt.xlabel('Sentiment')
+    plt.ylabel('Probability')
+    plt.title('Sentiment Probability Distribution')
+    plt.xticks(rotation=45)
+    plt.show()
+
+if args.text:
+    sentiment_distribution = sa.predict_single_sentiment(args.text)
+    print(sentiment_distribution)
+    plot_sentiment_histogram(sentiment_distribution)
+else:
+    sample_text = "She didn't come today because she lost her dog yesterday!"
+    sentiment_distribution = sa.predict_sentiment(sample_text)
+    print(sentiment_distribution)
+    plot_sentiment_histogram(sentiment_distribution)
