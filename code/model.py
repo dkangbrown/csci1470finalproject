@@ -194,6 +194,11 @@ class TextToChordModel:
         target_inputs = [i[:-1] for i in target_data]
         target_labels = [i[1:] for i in target_data]
 
+        # Pad the data
+        input_data = tf.keras.preprocessing.sequence.pad_sequences(input_data, padding='post')
+        target_inputs = tf.keras.preprocessing.sequence.pad_sequences(target_inputs, padding='post')
+        target_labels = tf.keras.preprocessing.sequence.pad_sequences(target_labels, padding='post')
+
         if retrain or not os.path.exists(self.model_path):
             self.build_model()
             self.compile_model()
