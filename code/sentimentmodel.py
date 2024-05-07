@@ -32,7 +32,7 @@ class SampleSentimentCallback(Callback):
 
 class SentimentAnalyzer():
     def __init__(self, retrain=False,
-                 data_path="csci1470finalproject/data/sentiment-data/train.txt",
+                 data_path="../data/sentiment-data/train.txt",
                  model_path="sentiment.keras", tokenizer_path="tokenizer.json",
                  labels_path="sentiment_labels.json",
                  sample_text="She didn't come today because she lost her dog yesterday!"):
@@ -462,7 +462,7 @@ if __name__ == "__main__":
     parser.add_argument("--text", type=str, help="Text to predict chord progression for.")
     args = parser.parse_args()
 
-    Path = "csci1470finalproject/data/chord-lyric-text/"
+    Path = "../data/chord-lyric-text/"
     filelist = os.listdir(Path)
     preprocessed_pairs = []
     file_name = re.compile(r"^([A-R]|[a-r])")
