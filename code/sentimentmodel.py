@@ -5,9 +5,157 @@ import string
 import tensorflow as tf
 import collections
 import numpy as np
+import pandas as pd
+from tensorflow.keras.preprocessing.text import Tokenizer, tokenizer_from_json
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+from keras.models import Sequential, load_model
+from keras.layers import Embedding, LSTM, Dense, Dropout, Bidirectional
+from keras.utils import to_categorical
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import Callback, EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
+import matplotlib.pyplot as plt
+import json
 
-class TextToChordModel:
-    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=5, validation_split=0.2):
+class SampleSentimentCallback(Callback):
+    def __init__(self, sample_text, analyzer):
+        super().__init__()
+        self.sample_text = sample_text
+        self.analyzer = analyzer
+
+    def on_epoch_end(self, epoch, logs=None):
+        print("\nSample text sentiment distribution at the end of epoch {}:".format(epoch + 1))
+        sentiment_distribution = self.analyzer.predict_sentiment(self.sample_text)
+        print(sentiment_distribution)
+
+
+class SentimentAnalyzer():
+    def __init__(self, retrain=False,
+                 data_path="../data/sentiment-data/train.txt",
+                 model_path="sentiment.keras", tokenizer_path="tokenizer.json",
+                 labels_path="sentiment_labels.json",
+                 sample_text="She didn't come today because she lost her dog yesterday!"):
+        self.data_path = data_path
+        self.model_path = model_path
+        self.tokenizer_path = tokenizer_path
+        self.labels_path = labels_path
+        self.data = pd.read_csv(data_path, sep=';')
+        self.data.columns = ["Text", "Emotions"]
+        self.label_encoder = LabelEncoder()
+        self.model = None
+        self.max_length = None
+        self.sentiment_classes = None
+        self.retrain = retrain
+        self.sample_text = sample_text
+
+        if self.retrain:
+            self.tokenizer = Tokenizer()
+        else:
+            self.load_tokenizer()
+
+        self.load_or_train_model()
+
+    def save_tokenizer(self):
+        tokenizer_json = self.tokenizer.to_json()
+        with open(self.tokenizer_path, 'w', encoding='utf-8') as f:
+            f.write(json.dumps(tokenizer_json, ensure_ascii=False))
+
+    def load_tokenizer(self):
+        with open(self.tokenizer_path, 'r', encoding='utf-8') as f:
+            tokenizer_json = json.load(f)
+            self.tokenizer = tokenizer_from_json(tokenizer_json)
+
+    def save_labels(self):
+        with open(self.labels_path, 'w') as file:
+            json.dump(self.label_encoder.classes_.tolist(), file)
+
+    def load_labels(self):
+        with open(self.labels_path, 'r') as file:
+            classes = json.load(file)
+            self.label_encoder.classes_ = np.array(classes)
+            self.sentiment_classes = classes
+
+    def preprocess_data(self):
+        texts = self.data["Text"].tolist()
+        labels = self.data["Emotions"].tolist()
+        
+        self.tokenizer.fit_on_texts(texts)
+        sequences = self.tokenizer.texts_to_sequences(texts)
+        self.max_length = max([len(seq) for seq in sequences])
+        
+        padded_sequences = pad_sequences(sequences, maxlen=self.max_length)
+        labels = self.label_encoder.fit_transform(labels)
+        one_hot_labels = to_categorical(labels)
+
+        self.sentiment_classes = self.label_encoder.classes_
+        return train_test_split(padded_sequences, one_hot_labels, test_size=0.2, stratify=labels)
+
+    def build_model(self, input_dim, output_dim, input_length, units, num_classes):
+        optimizer = Adam(learning_rate=0.0005) 
+        self.model = Sequential()
+        self.model.add(Embedding(input_dim=input_dim, output_dim=output_dim))
+        self.model.add(Dropout(0.3))
+        self.model.add(Bidirectional(LSTM(units=units)))
+        self.model.add(Dropout(0.5))
+        self.model.add(Dense(units=num_classes, activation='softmax'))
+        self.model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
+
+    def train_model(self, xtrain, ytrain, xtest, ytest, epochs=5, batch_size=32):
+        reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=2, min_lr=0.0001)
+        sample_callback = SampleSentimentCallback(self.sample_text, self)
+
+        model_checkpoint = ModelCheckpoint(
+            self.model_path,
+            monitor='val_loss',
+            save_best_only=True,
+            save_weights_only=False,
+            mode='min',
+            verbose=1
+        )
+        self.save_tokenizer()
+
+        return self.model.fit(xtrain, ytrain, epochs=epochs, batch_size=batch_size,
+                              validation_data=(xtest, ytest),
+                              callbacks=[reduce_lr, sample_callback, model_checkpoint])
+
+    def save_model(self):
+        self.model.save(self.model_path)
+
+    def load_or_train_model(self):
+        if os.path.exists(self.model_path) and not self.retrain:
+            self.model = load_model(self.model_path)
+            self.load_labels() 
+            print("Loaded existing model.")
+        else:
+            xtrain, xtest, ytrain, ytest = self.preprocess_data()
+            self.build_model(input_dim=len(self.tokenizer.word_index) + 1, output_dim=132, input_length=self.max_length, units=64, num_classes=len(ytrain[0]))
+            self.train_model(xtrain, ytrain, xtest, ytest)
+            self.save_model()
+            self.save_labels()
+            print("Trained and saved a new model.")
+
+    def predict_single_sentiment(self, text):
+        input_sequence = self.tokenizer.texts_to_sequences([text])
+        padded_input_sequence = pad_sequences(input_sequence, maxlen=self.max_length)
+        prediction = self.model.predict(padded_input_sequence)
+        predicted_label = self.label_encoder.inverse_transform([np.argmax(prediction[0])])
+        return predicted_label
+
+    def predict_sentiment(self, text):
+        input_sequence = self.tokenizer.texts_to_sequences([text])
+        if not input_sequence[0]: # Uniform distribution if no known words
+            print("No known words in the input text.")
+            return {label: 1/len(self.sentiment_classes) for label in self.sentiment_classes} 
+
+        padded_input_sequence = pad_sequences(input_sequence, maxlen=self.max_length)
+        prediction = self.model.predict(padded_input_sequence)
+        return list(prediction[0])
+        #sentiment_distribution = dict(zip(self.sentiment_classes, prediction[0]))
+        #return sentiment_distribution
+
+class SentimentToChordModel:
+    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=1, validation_split=0.2):
         self.embed_size = embed_size
         self.hidden_size = hidden_size
         self.batch_size = batch_size
@@ -23,6 +171,7 @@ class TextToChordModel:
         self.encode_input_lyr = None
         self.encode_embedding_lyr = None
         self.encode_gru_lyr = None
+        self.sa = SentimentAnalyzer(retrain=True)
 
     @staticmethod
     def preprocess_song(file_path):
@@ -137,29 +286,34 @@ class TextToChordModel:
         def encode_chord(root_pitch, base_pitch, quality):
             return root_pitch * 8 + quality
         
-        self.word_count = collections.Counter()
+        # self.word_count = collections.Counter()
 
         for pair in preprocessed_pairs:
-            split_input = pair.get("text").translate(str.maketrans('', '', string.punctuation)).lower().split()
-            split_input.append("<STOP>")
-            self.word_count.update(split_input)
-            inputs.append(split_input)
+            # split_input = pair.get("text").translate(str.maketrans('', '', string.punctuation)).lower().split()
+            # split_input.append("<STOP>")
+            # self.word_count.update(split_input)
+            inputs.append(pair.get("text"))
             split_targets = pair.get("chords")
             split_targets.append(96)
             targets.append(split_targets)
 
-        def unk_text(texts, minimum_frequency):
-            for text in texts:
-                for index, word in enumerate(text):
-                    if self.word_count[word] <= minimum_frequency:
-                        text[index] = '<unk>'
-        unk_text(inputs,3)
+        #input_data = [list(map(lambda x: sa.predict_sentiment(x), i)) for i in inputs]
+        input_data = []
+        for d,i in enumerate(inputs):
+            input_data.append(self.sa.predict_sentiment(i))
+            print(d)
+        # def unk_text(texts, minimum_frequency):
+        #     for text in texts:
+        #         for index, word in enumerate(text):
+        #             if self.word_count[word] <= minimum_frequency:
+        #                 text[index] = '<unk>'
+        # unk_text(inputs,3)
 
-        unique_input_words = sorted(set([i for j in inputs for i in j]))
-        self.input_vocab = {w: i for i, w in enumerate(unique_input_words)}
+        # unique_input_words = sorted(set([i for j in inputs for i in j]))
+        # self.input_vocab = {w: i for i, w in enumerate(unique_input_words)}
 
-        input_data = [list(map(lambda x: self.input_vocab.get(x), i)) for i in inputs]
-        self.input_vocab_size = len(unique_input_words)
+        # input_data = [list(map(lambda x: self.input_vocab.get(x), i)) for i in inputs]
+        # self.input_vocab_size = len(unique_input_words)
 
         target_data = targets
         self.target_vocab_size = 97
@@ -169,7 +323,7 @@ class TextToChordModel:
     def build_model(self):
 
         self.encode_input_lyr = tf.keras.Input(shape=(None,))
-        self.encode_embedding_lyr = tf.keras.layers.Embedding(self.input_vocab_size, self.embed_size)
+        self.encode_embedding_lyr = tf.keras.layers.Embedding(6, self.embed_size)
         self.encode_gru_lyr = tf.keras.layers.GRU(self.hidden_size, return_state=True)
         inputs = self.encode_input_lyr
         input_embedding = self.encode_embedding_lyr(inputs)
@@ -191,7 +345,7 @@ class TextToChordModel:
         loss = tf.keras.losses.SparseCategoricalCrossentropy()
         metrics = [self.perplexity]
         metrics2 = ['accuracy']
-        self.model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
+        self.model.compile(optimizer=optimizer, loss=loss, metrics=metrics2)
 
     def train_model(self, input_data, target_inputs, target_labels):
         self.model.fit(
@@ -212,7 +366,6 @@ class TextToChordModel:
         target_inputs = [i[:-1] for i in target_data]
         target_labels = [i[1:] for i in target_data]
 
-        input_data = tf.keras.preprocessing.sequence.pad_sequences(input_data, padding='post')
         target_inputs = tf.keras.preprocessing.sequence.pad_sequences(target_inputs, padding='post')
         target_labels = tf.keras.preprocessing.sequence.pad_sequences(target_labels, padding='post')
 
@@ -227,31 +380,34 @@ class TextToChordModel:
             print("Loaded existing model.")
 
     def predict(self, text):
-        split_input = text.translate(str.maketrans('', '', string.punctuation)).lower().split()
-        split_input.append("<STOP>")
+        # split_input = text.translate(str.maketrans('', '', string.punctuation)).lower().split()
+        # split_input.append("<STOP>")
 
-        def unk_text(minimum_frequency):
-            for index, word in enumerate(split_input):
-                if self.word_count[word] <= minimum_frequency:
-                    split_input[index] = '<unk>'
-        unk_text(3)
+        # def unk_text(minimum_frequency):
+        #     for index, word in enumerate(split_input):
+        #         if self.word_count[word] <= minimum_frequency:
+        #             split_input[index] = '<unk>'
+        # unk_text(3)
 
-        print(split_input)
+        # print(split_input)
 
-        input_data = tf.convert_to_tensor(list(map(lambda x: self.input_vocab.get(x), split_input)), dtype=tf.int32)
+        # input_data = tf.convert_to_tensor(list(map(lambda x: self.input_vocab.get(x), split_input)), dtype=tf.int32)
+        # input_data = tf.reshape(input_data, [1, -1])
+
+        # print(input_data)
+
+        input_data = tf.convert_to_tensor(self.sa.predict_sentiment(text))
         input_data = tf.reshape(input_data, [1, -1])
-
-        print(input_data)
 
         decoder_input = tf.convert_to_tensor([96], dtype=tf.int32)
         decoder_input = tf.reshape(decoder_input, [1, -1])
 
-        print(decoder_input)
+        print(input_data)
         output = []
 
-        temp = 0.5
+        temp = 0.05
 
-        for _ in range(16):  # Arbitrary output length limit
+        for _ in range(15):  # Arbitrary output length limit
             prediction_logits = self.model.predict([input_data, decoder_input])
             probs = tf.nn.softmax(prediction_logits / temp).numpy()[0, -1, :]
             attempts = 0
@@ -261,7 +417,7 @@ class TextToChordModel:
             # print(probs)
             if output:
                 while next_token == 96 or next_token == output[-1]:
-                    indices = np.argsort(probs)[:-15]
+                    indices = np.argsort(probs)[:-10]
                     probs[indices] = 0
                     probs = probs / np.sum(probs)
                     next_token = np.random.choice(len(probs), p=probs)
@@ -306,17 +462,17 @@ if __name__ == "__main__":
     parser.add_argument("--text", type=str, help="Text to predict chord progression for.")
     args = parser.parse_args()
 
-    Path = "csci1470finalproject/data/chord-lyric-text/"
+    Path = "../data/chord-lyric-text/"
     filelist = os.listdir(Path)
     preprocessed_pairs = []
     file_name = re.compile(r"^([A-R]|[a-r])")
 
     for i in filelist:
         if i.endswith(".txt"):
-            song_data = TextToChordModel.preprocess_song(Path + i)
+            song_data = SentimentToChordModel.preprocess_song(Path + i)
             preprocessed_pairs += song_data
 
-    model = TextToChordModel()
+    model = SentimentToChordModel()
 
     model.run(preprocessed_pairs, retrain=args.retrain)
     model.model.summary()
