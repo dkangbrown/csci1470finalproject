@@ -4,9 +4,10 @@ import re
 import string
 import tensorflow as tf
 import collections
+import numpy as np
 
 class TextToChordModel:
-    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=3, validation_split=0.2):
+    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=1, validation_split=0.2):
         self.embed_size = embed_size
         self.hidden_size = hidden_size
         self.batch_size = batch_size
@@ -140,8 +141,8 @@ class TextToChordModel:
 
         for pair in preprocessed_pairs:
             split_input = pair.get("text").translate(str.maketrans('', '', string.punctuation)).lower().split()
-            self.word_count.update(split_input)
             split_input.append("<STOP>")
+            self.word_count.update(split_input)
             inputs.append(split_input)
             split_targets = pair.get("chords")
             split_targets.append(96)
@@ -176,10 +177,10 @@ class TextToChordModel:
 
         targets = tf.keras.Input(shape=(None,))
         target_embedding = tf.keras.layers.Embedding(self.target_vocab_size, self.embed_size)(targets)
-        decoder_output = tf.keras.layers.GRU(self.hidden_size, return_sequences=True)(target_embedding, initial_state=state)
-        classifier_output = tf.keras.layers.Dense(self.target_vocab_size, activation='softmax')(decoder_output)
+        decoder_output, _ = tf.keras.layers.GRU(self.hidden_size, return_sequences=True, return_state=True)(target_embedding, initial_state=state)
+        classifier_logits = tf.keras.layers.Dense(self.target_vocab_size)(decoder_output)
 
-        self.model = tf.keras.Model(inputs=[inputs, targets], outputs=classifier_output)
+        self.model = tf.keras.Model(inputs=[inputs, targets], outputs=classifier_logits)
 
     @staticmethod
     def perplexity(logits, labels):
@@ -235,25 +236,69 @@ class TextToChordModel:
                     split_input[index] = '<unk>'
         unk_text(3)
 
+        print(split_input)
+
         input_data = tf.convert_to_tensor(list(map(lambda x: self.input_vocab.get(x), split_input)), dtype=tf.int32)
         input_data = tf.reshape(input_data, [1, -1])
 
+        print(input_data)
+
         decoder_input = tf.convert_to_tensor([96], dtype=tf.int32)
         decoder_input = tf.reshape(decoder_input, [1, -1])
+
+        print(decoder_input)
         output = []
 
+        temp = 0.05
+
         for _ in range(15):  # Arbitrary output length limit
-            prediction = self.model.predict([input_data, decoder_input])
-            predicted_id = tf.argmax(prediction[0, -1, :]).numpy()
-            output.append(predicted_id)
-            if predicted_id == 96:
+            prediction_logits = self.model.predict([input_data, decoder_input])
+            probs = tf.nn.softmax(prediction_logits / temp).numpy()[0, -1, :]
+            attempts = 0
+            stop_token = "<STOP>"
+
+            next_token = 96
+            # print(probs)
+            if output:
+                while next_token == 96 or next_token == output[-1]:
+                    indices = np.argsort(probs)[:-10]
+                    probs[indices] = 0
+                    probs = probs / np.sum(probs)
+                    next_token = np.random.choice(len(probs), p=probs)
+            else:
+                while next_token == 96:
+                    indices = np.argsort(probs)[:-15]
+                    probs[indices] = 0
+                    probs = probs / np.sum(probs)
+                    next_token = np.random.choice(len(probs), p=probs)
+            # predicted_id = tf.argmax(prediction_logits[0, -1, :]).numpy()
+            output.append(next_token)
+            if next_token == stop_token:
                 break
             #decoder_input = tf.concat([decoder_input, [[predicted_id]]], axis=1)
             decoder_input = tf.convert_to_tensor([output], dtype=tf.int32)
 
         # reverse_target_vocab = {i: w for w, i in self.target_vocab.items()}
         # chords = [reverse_target_vocab.get(i, "<UNK>") for i in output]
-        return output
+        return self.decode_chords(output)
+
+    def decode_chords(self, chords):
+        new_chords = []
+        key_to_pitch = {
+            0: 'A', 1: 'Bb', 2: 'B', 3: 'C', 4: 'C#', 5: 'D', 6: 'Eb', 7: 'E', 8: 'F', 9: 'F#', 10: 'G', 11: 'Ab'
+        }
+        qual_to_num = {
+            0: '', 1: 'maj7', 2: '7', 3: 'm', 4: 'min7', 5: 'dim', 6: 'aug', 7: 'sus2', 8: 'sus4'
+        }
+        for chord in chords:
+            if chord == 96:
+                new_chords.append('<unk>')
+                continue
+            key = key_to_pitch[np.floor(chord / 8)]
+            qual = qual_to_num[chord % 8]
+            new_chords.append(key + qual)
+        
+        return new_chords
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train or load a text-to-chord generation model.")
