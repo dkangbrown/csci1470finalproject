@@ -6,7 +6,7 @@ import tensorflow as tf
 import collections
 
 class TextToChordModel:
-    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=32, epochs=5, validation_split=0.2):
+    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=3, validation_split=0.2):
         self.embed_size = embed_size
         self.hidden_size = hidden_size
         self.batch_size = batch_size
@@ -176,7 +176,7 @@ class TextToChordModel:
 
         targets = tf.keras.Input(shape=(None,))
         target_embedding = tf.keras.layers.Embedding(self.target_vocab_size, self.embed_size)(targets)
-        decoder_output = tf.keras.layers.GRU(self.hidden_size, return_sequences=True)(target_embedding, initial_state=encoder_output)
+        decoder_output = tf.keras.layers.GRU(self.hidden_size, return_sequences=True)(target_embedding, initial_state=state)
         classifier_output = tf.keras.layers.Dense(self.target_vocab_size, activation='softmax')(decoder_output)
 
         self.model = tf.keras.Model(inputs=[inputs, targets], outputs=classifier_output)
@@ -189,13 +189,13 @@ class TextToChordModel:
         optimizer = tf.keras.optimizers.Adam()
         loss = tf.keras.losses.SparseCategoricalCrossentropy()
         metrics = [self.perplexity]
-
-        self.model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
+        metrics2 = ['accuracy']
+        self.model.compile(optimizer=optimizer, loss=loss, metrics=metrics2)
 
     def train_model(self, input_data, target_inputs, target_labels):
         self.model.fit(
             x=[input_data, target_inputs],
-            y=[target_labels],
+            y=target_labels,
             epochs=self.epochs,
             batch_size=self.batch_size,
             validation_split=self.validation_split
@@ -249,12 +249,11 @@ class TextToChordModel:
             if predicted_id == 96:
                 break
             #decoder_input = tf.concat([decoder_input, [[predicted_id]]], axis=1)
-            decoder_input = tf.convert_to_tensor([predicted_id], dtype=tf.int32)
-            decoder_input = tf.reshape(decoder_input, [1, -1])
+            decoder_input = tf.convert_to_tensor([output], dtype=tf.int32)
 
-        reverse_target_vocab = {i: w for w, i in self.target_vocab.items()}
-        chords = [reverse_target_vocab.get(i, "<UNK>") for i in output]
-        return chords
+        # reverse_target_vocab = {i: w for w, i in self.target_vocab.items()}
+        # chords = [reverse_target_vocab.get(i, "<UNK>") for i in output]
+        return output
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train or load a text-to-chord generation model.")
@@ -262,7 +261,7 @@ if __name__ == "__main__":
     parser.add_argument("--text", type=str, help="Text to predict chord progression for.")
     args = parser.parse_args()
 
-    Path = "csci1470finalproject/data/chord-lyric-text/"
+    Path = "../data/chord-lyric-text/"
     filelist = os.listdir(Path)
     preprocessed_pairs = []
     file_name = re.compile(r"^([A-R]|[a-r])")
