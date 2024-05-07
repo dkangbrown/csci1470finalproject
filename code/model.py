@@ -306,7 +306,7 @@ if __name__ == "__main__":
     parser.add_argument("--text", type=str, help="Text to predict chord progression for.")
     args = parser.parse_args()
 
-    Path = "../data/chord-lyric-text/"
+    Path = "csci1470finalproject/data/chord-lyric-text/"
     filelist = os.listdir(Path)
     preprocessed_pairs = []
     file_name = re.compile(r"^([A-R]|[a-r])")
