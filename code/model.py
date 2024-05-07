@@ -7,7 +7,7 @@ import collections
 import numpy as np
 
 class TextToChordModel:
-    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=1, validation_split=0.2):
+    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=5, validation_split=0.2):
         self.embed_size = embed_size
         self.hidden_size = hidden_size
         self.batch_size = batch_size
@@ -191,7 +191,7 @@ class TextToChordModel:
         loss = tf.keras.losses.SparseCategoricalCrossentropy()
         metrics = [self.perplexity]
         metrics2 = ['accuracy']
-        self.model.compile(optimizer=optimizer, loss=loss, metrics=metrics2)
+        self.model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
 
     def train_model(self, input_data, target_inputs, target_labels):
         self.model.fit(
@@ -249,9 +249,9 @@ class TextToChordModel:
         print(decoder_input)
         output = []
 
-        temp = 0.05
+        temp = 0.5
 
-        for _ in range(15):  # Arbitrary output length limit
+        for _ in range(16):  # Arbitrary output length limit
             prediction_logits = self.model.predict([input_data, decoder_input])
             probs = tf.nn.softmax(prediction_logits / temp).numpy()[0, -1, :]
             attempts = 0
@@ -261,7 +261,7 @@ class TextToChordModel:
             # print(probs)
             if output:
                 while next_token == 96 or next_token == output[-1]:
-                    indices = np.argsort(probs)[:-10]
+                    indices = np.argsort(probs)[:-15]
                     probs[indices] = 0
                     probs = probs / np.sum(probs)
                     next_token = np.random.choice(len(probs), p=probs)
