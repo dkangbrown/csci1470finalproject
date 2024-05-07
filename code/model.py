@@ -18,6 +18,10 @@ class TextToChordModel:
         self.model_path = model_path
         self.input_vocab = None
         self.target_vocab = None
+        self.word_count = None
+        self.encode_input_lyr = None
+        self.encode_embedding_lyr = None
+        self.encode_gru_lyr = None
 
     @staticmethod
     def preprocess_song(file_path):
@@ -132,21 +136,21 @@ class TextToChordModel:
         def encode_chord(root_pitch, base_pitch, quality):
             return root_pitch * 8 + quality
         
-        word_count = collections.Counter()
+        self.word_count = collections.Counter()
 
         for pair in preprocessed_pairs:
             split_input = pair.get("text").translate(str.maketrans('', '', string.punctuation)).lower().split()
-            word_count.update(split_input)
+            self.word_count.update(split_input)
             split_input.append("<STOP>")
             inputs.append(split_input)
             split_targets = pair.get("chords")
-            split_targets.append("<STOP>")
+            split_targets.append(96)
             targets.append(split_targets)
 
         def unk_text(texts, minimum_frequency):
             for text in texts:
                 for index, word in enumerate(text):
-                    if word_count[word] <= minimum_frequency:
+                    if self.word_count[word] <= minimum_frequency:
                         text[index] = '<unk>'
         unk_text(inputs,3)
 
@@ -157,14 +161,18 @@ class TextToChordModel:
         self.input_vocab_size = len(unique_input_words)
 
         target_data = targets
-        self.target_vocab_size = 96
+        self.target_vocab_size = 97
 
         return input_data, target_data
 
     def build_model(self):
-        inputs = tf.keras.Input(shape=(None,))
-        input_embedding = tf.keras.layers.Embedding(self.input_vocab_size, self.embed_size)(inputs)
-        encoder_output, state = tf.keras.layers.GRU(self.hidden_size, return_state=True)(input_embedding)
+
+        self.encode_input_lyr = tf.keras.Input(shape=(None,))
+        self.encode_embedding_lyr = tf.keras.layers.Embedding(self.input_vocab_size, self.embed_size)
+        self.encode_gru_lyr = tf.keras.layers.GRU(self.hidden_size, return_state=True)
+        inputs = self.encode_input_lyr
+        input_embedding = self.encode_embedding_lyr(inputs)
+        encoder_output, state = self.encode_gru_lyr(input_embedding)
 
         targets = tf.keras.Input(shape=(None,))
         target_embedding = tf.keras.layers.Embedding(self.target_vocab_size, self.embed_size)(targets)
@@ -203,6 +211,10 @@ class TextToChordModel:
         target_inputs = [i[:-1] for i in target_data]
         target_labels = [i[1:] for i in target_data]
 
+        input_data = tf.keras.preprocessing.sequence.pad_sequences(input_data, padding='post')
+        target_inputs = tf.keras.preprocessing.sequence.pad_sequences(target_inputs, padding='post')
+        target_labels = tf.keras.preprocessing.sequence.pad_sequences(target_labels, padding='post')
+
         if retrain or not os.path.exists(self.model_path):
             self.build_model()
             self.compile_model()
@@ -217,19 +229,28 @@ class TextToChordModel:
         split_input = text.translate(str.maketrans('', '', string.punctuation)).lower().split()
         split_input.append("<STOP>")
 
-        input_indices = [self.input_vocab.get(word, 0) for word in split_input]
-        input_data = tf.convert_to_tensor([input_indices], dtype=tf.int32)
+        def unk_text(minimum_frequency):
+            for index, word in enumerate(split_input):
+                if self.word_count[word] <= minimum_frequency:
+                    split_input[index] = '<unk>'
+        unk_text(3)
 
-        decoder_input = tf.convert_to_tensor([[self.target_vocab["<STOP>"]]], dtype=tf.int32)
+        input_data = tf.convert_to_tensor(list(map(lambda x: self.input_vocab.get(x), split_input)), dtype=tf.int32)
+        input_data = tf.reshape(input_data, [1, -1])
+
+        decoder_input = tf.convert_to_tensor([96], dtype=tf.int32)
+        decoder_input = tf.reshape(decoder_input, [1, -1])
         output = []
 
-        for _ in range(100):  # Arbitrary output length limit
+        for _ in range(15):  # Arbitrary output length limit
             prediction = self.model.predict([input_data, decoder_input])
             predicted_id = tf.argmax(prediction[0, -1, :]).numpy()
             output.append(predicted_id)
-            if predicted_id == self.target_vocab["<STOP>"]:
+            if predicted_id == 96:
                 break
-            decoder_input = tf.concat([decoder_input, [[predicted_id]]], axis=-1)
+            #decoder_input = tf.concat([decoder_input, [[predicted_id]]], axis=1)
+            decoder_input = tf.convert_to_tensor([predicted_id], dtype=tf.int32)
+            decoder_input = tf.reshape(decoder_input, [1, -1])
 
         reverse_target_vocab = {i: w for w, i in self.target_vocab.items()}
         chords = [reverse_target_vocab.get(i, "<UNK>") for i in output]
@@ -241,7 +262,7 @@ if __name__ == "__main__":
     parser.add_argument("--text", type=str, help="Text to predict chord progression for.")
     args = parser.parse_args()
 
-    Path = "../data/chord-lyric-text/"
+    Path = "csci1470finalproject/data/chord-lyric-text/"
     filelist = os.listdir(Path)
     preprocessed_pairs = []
     file_name = re.compile(r"^([A-R]|[a-r])")
