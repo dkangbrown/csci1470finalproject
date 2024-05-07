@@ -3,6 +3,7 @@ import os
 import re
 import string
 import tensorflow as tf
+import collections
 
 class TextToChordModel:
     def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=32, epochs=5, validation_split=0.2):
@@ -88,16 +89,20 @@ class TextToChordModel:
             elif '17' in qual:
                 qual = qual[0:qual.index('17')]
 
-            return [chord_rel_pitch, base_rel_pitch, qual_to_num[qual]]
+            return [chord_rel_pitch, qual_to_num[qual]]
+
+        def encode_chord(chord):
+            """ Encode chord components into a single integer. """
+            return chord[0] * 8 + chord[1]
 
         def get_chord_list(line):
             line = line.strip()
             chord_list = line.split(" ")
             chord_list = [x for x in chord_list if x]
-            return [chord_to_vector(x) for x in chord_list]
+            return [encode_chord(chord_to_vector(x)) for x in chord_list]
 
         for line in lines:
-            line = line.strip().replace('|', ' ').replace('(', ' ').replace(')', ' ').replace('-', ' ').replace('%', ' ')\
+            line = line.strip().replace('\'','').replace('�','').replace('|', ' ').replace('(', ' ').replace(')', ' ').replace('-', ' ').replace('%', ' ')\
                 .replace('\t', ' ').replace('\\', '/').replace('/ ', ' ').replace('*', ' ').replace('@', ' ')\
                 .replace(',  ', '   ').replace('x2', ' ').replace('x3', ' ').replace('x4', ' ').replace('x5', ' ')\
                 .replace('x6', ' ').replace('x7', ' ').replace('x8', ' ')
@@ -125,18 +130,25 @@ class TextToChordModel:
         inputs, targets = [], []
 
         def encode_chord(root_pitch, base_pitch, quality):
-            return root_pitch * 96 + base_pitch * 8 + quality
-
-        def encode_chords(chords):
-            return [str(encode_chord(chord[0], chord[1], chord[2])) for chord in chords]
+            return root_pitch * 8 + quality
+        
+        word_count = collections.Counter()
 
         for pair in preprocessed_pairs:
             split_input = pair.get("text").translate(str.maketrans('', '', string.punctuation)).lower().split()
+            word_count.update(split_input)
             split_input.append("<STOP>")
             inputs.append(split_input)
-            split_targets = encode_chords(pair.get("chords"))
+            split_targets = pair.get("chords")
             split_targets.append("<STOP>")
             targets.append(split_targets)
+
+        def unk_text(texts, minimum_frequency):
+            for text in texts:
+                for index, word in enumerate(text):
+                    if word_count[word] <= minimum_frequency:
+                        text[index] = '<unk>'
+        unk_text(inputs,3)
 
         unique_input_words = sorted(set([i for j in inputs for i in j]))
         self.input_vocab = {w: i for i, w in enumerate(unique_input_words)}
@@ -144,11 +156,8 @@ class TextToChordModel:
         input_data = [list(map(lambda x: self.input_vocab.get(x), i)) for i in inputs]
         self.input_vocab_size = len(unique_input_words)
 
-        unique_target_words = sorted(set([i for j in targets for i in j]))
-        self.target_vocab = {w: i for i, w in enumerate(unique_target_words)}
-
-        target_data = [list(map(lambda x: self.target_vocab.get(x), i)) for i in targets]
-        self.target_vocab_size = len(unique_target_words)
+        target_data = targets
+        self.target_vocab_size = 96
 
         return input_data, target_data
 
