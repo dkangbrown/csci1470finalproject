@@ -1,6 +1,7 @@
 import argparse
 import os
 import re
+import csv
 import string
 import tensorflow as tf
 import collections
@@ -284,7 +285,7 @@ class SentimentToChordModel:
 
         return [x for x in verses if x['chords']]
 
-    def prepare_data(self, preprocessed_pairs):
+    def prepare_data(self, preprocessed_pairs, retrain):
         """ Prepare data for model input from texts and chord vectors. """
         inputs, targets = [], []
 
@@ -304,9 +305,19 @@ class SentimentToChordModel:
 
         #input_data = [list(map(lambda x: sa.predict_sentiment(x), i)) for i in inputs]
         input_data = []
-        for d,i in enumerate(inputs):
-            input_data.append(self.sa.predict_sentiment(i))
-            print(d)
+        if retrain:
+            for d,i in enumerate(inputs):
+                input_data.append(self.sa.predict_sentiment(i))
+                print(d)
+            with open('sentimentinputs.csv', 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerows(input_data)
+        else:
+            with open('sentimentinputs.csv', 'r') as f:
+                reader = csv.reader(f)
+                input_data = list(reader)
+        print(input_data[:5])
+
         # def unk_text(texts, minimum_frequency):
         #     for text in texts:
         #         for index, word in enumerate(text):
@@ -367,7 +378,7 @@ class SentimentToChordModel:
         self.model = tf.keras.models.load_model(self.model_path, custom_objects={'perplexity': self.perplexity})
 
     def run(self, preprocessed_pairs, retrain=False):
-        input_data, target_data = self.prepare_data(preprocessed_pairs)
+        input_data, target_data = self.prepare_data(preprocessed_pairs, retrain)
         target_inputs = [i[:-1] for i in target_data]
         target_labels = [i[1:] for i in target_data]
 
