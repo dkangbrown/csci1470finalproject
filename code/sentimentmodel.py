@@ -146,7 +146,7 @@ class SentimentAnalyzer():
         input_sequence = self.tokenizer.texts_to_sequences([text])
         if not input_sequence[0]: # Uniform distribution if no known words
             print("No known words in the input text.")
-            return {label: 1/len(self.sentiment_classes) for label in self.sentiment_classes} 
+            return [1/len(self.sentiment_classes) for label in self.sentiment_classes]
 
         padded_input_sequence = pad_sequences(input_sequence, maxlen=self.max_length)
         prediction = self.model.predict(padded_input_sequence)
@@ -155,7 +155,7 @@ class SentimentAnalyzer():
         #return sentiment_distribution
 
 class SentimentToChordModel:
-    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=1, validation_split=0.2):
+    def __init__(self, retrain, model_path='sentiment_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=5, validation_split=0.2):
         self.embed_size = embed_size
         self.hidden_size = hidden_size
         self.batch_size = batch_size
@@ -171,7 +171,12 @@ class SentimentToChordModel:
         self.encode_input_lyr = None
         self.encode_embedding_lyr = None
         self.encode_gru_lyr = None
-        self.sa = SentimentAnalyzer(retrain=True)
+        self.sa = SentimentAnalyzer(retrain)
+        # Load tokenizer here if not retraining
+        if not retrain:
+            with open('tokenizer.json', 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                self.sa.tokenizer = tokenizer_from_json(data)
 
     @staticmethod
     def preprocess_song(file_path):
@@ -368,6 +373,7 @@ class SentimentToChordModel:
 
         target_inputs = tf.keras.preprocessing.sequence.pad_sequences(target_inputs, padding='post')
         target_labels = tf.keras.preprocessing.sequence.pad_sequences(target_labels, padding='post')
+        input_data = tf.convert_to_tensor(input_data)
 
         if retrain or not os.path.exists(self.model_path):
             self.build_model()
@@ -472,7 +478,7 @@ if __name__ == "__main__":
             song_data = SentimentToChordModel.preprocess_song(Path + i)
             preprocessed_pairs += song_data
 
-    model = SentimentToChordModel()
+    model = SentimentToChordModel(retrain=args.retrain)
 
     model.run(preprocessed_pairs, retrain=args.retrain)
     model.model.summary()
