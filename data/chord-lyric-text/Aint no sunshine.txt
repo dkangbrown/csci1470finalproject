@@ -21,6 +21,31 @@ Ain't no sunshine when she's gone, and this house just ain't no home,
 Anytime she goes away.
 
 
+[{'text': "aint no sunshine when shes gone its not warm...",
+'chords': [Am,Am,Em,G,Am,Am,Am,Em,G,Am,Em,Dm,Am,Em,G,Am]},
+{'text': "wonder this time where shes gone wonder if shes...",
+'chords': [Am,Am,Em,G,Am,Am,Am,Em,G,Am,Em,Dm,Am,Em,G,Am]}]
+
+[{'text': "aint no sunshine when shes gone its not warm...",
+'chords': [3,3,59,80,3,3,3,59,80,3,59,43,3,59,80,3]},
+{'text': "wonder this time where shes gone wonder if shes...",
+'chords': [3,3,59,80,3,3,3,59,80,3,59,43,3,59,80,3]}]
+
+[{'text': ['aint','no','sunshine',...,'<STOP>'],
+'chords': [3,3,59,80,3,3,3,59,80,3,59,43,3,59,80,3,96]},
+{'text': ['wonder', 'this', 'time',...., '<STOP>'],
+'chords': [3,3,59,80,3,3,3,59,80,3,59,43,3,59,80,3,96]}]
+
+[{'text': [176,589,1589,...,20],
+'chords': [3,3,59,80,3,3,3,59,80,3,59,43,3,59,80,3,96]},
+{'text': [1679,1483,1531,...,20],
+'chords': [3,3,59,80,3,3,3,59,80,3,59,43,3,59,80,3,96]}]
+
+
+
+
+
+
 
 [Verse 2]
 

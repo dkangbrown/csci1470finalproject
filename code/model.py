@@ -5,9 +5,10 @@ import string
 import tensorflow as tf
 import collections
 import numpy as np
+from tensorboard.plugins import projector
 
 class TextToChordModel:
-    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=5, validation_split=0.2):
+    def __init__(self, model_path='text_to_chord_model.keras', embed_size=64, hidden_size=72, batch_size=16, epochs=1, validation_split=0.2):
         self.embed_size = embed_size
         self.hidden_size = hidden_size
         self.batch_size = batch_size
@@ -299,11 +300,44 @@ class TextToChordModel:
             new_chords.append(key + qual)
         
         return new_chords
+    
+    def visualize_word_embedding(self):
+        # Set up a logs directory, so Tensorboard knows where to look for files.
+        self.load_model()
+        log_dir='../logs/wordembedding/'
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+
+        # Save Labels separately on a line-by-line manner.
+        with open(os.path.join(log_dir, 'metadata.tsv'), "w") as f:
+            for subwords in self.input_vocab:
+                f.write("{}\n".format(subwords))
+
+
+        # Save the weights we want to analyze as a variable. Note that the first
+        # value represents any unknown word, which is not in the metadata, here
+        # we will remove this value.
+        weights = tf.Variable(self.model.get_layer(index=2).get_weights()[0][1:])
+        # Create a checkpoint from embedding, the filename and key are the
+        # name of the tensor.
+        checkpoint = tf.train.Checkpoint(embedding=weights)
+        checkpoint.save(os.path.join(log_dir, "embedding.ckpt"))
+
+        # Set up config.
+        config = projector.ProjectorConfig()
+        embedding = config.embeddings.add()
+        # The name of the tensor will be suffixed by `/.ATTRIBUTES/VARIABLE_VALUE`.
+        embedding.tensor_name = "embedding/.ATTRIBUTES/VARIABLE_VALUE"
+        embedding.metadata_path = 'metadata.tsv'
+        projector.visualize_embeddings(log_dir, config)
+        
+        
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train or load a text-to-chord generation model.")
     parser.add_argument("--retrain", action="store_true", help="Retrain the model.")
     parser.add_argument("--text", type=str, help="Text to predict chord progression for.")
+    parser.add_argument("--visualize", action="store_true", help="Visualize word embeddings.")
     args = parser.parse_args()
 
     Path = "../data/chord-lyric-text/"
@@ -324,6 +358,8 @@ if __name__ == "__main__":
     if args.text:
         print("Predicting chord progression for text: ", args.text)
         print(model.predict(args.text))
+    if args.visualize:
+        model.visualize_word_embedding()
 
 
 # import utils
